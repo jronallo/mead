@@ -15,6 +15,7 @@ class TestMeadValidations < Test::Unit::TestCase
     end  
 
     should "show ua023_031-001-cb0003-005-001 to be a valid mead" do
+      require 'ruby-debug'; debugger
       mead = Mead::Identifier.new('ua023_031-001-cb0003-005-001', @loc_ua023_031)
       assert mead.valid?
     end

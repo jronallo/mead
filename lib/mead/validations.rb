@@ -36,17 +36,23 @@ module Mead
           instance.errors[attribute] = [message]
         end
       end
+      
+      # FIXME: This should be a more generic regular expression. Overriding this
+      # method is the way to use a different regular expression during format
+      # validation.
+      def format_regexp
+        container_codes = Mead::CONTAINER_MAPPING.keys.join('|') 
+        #/^(ua\d{3}|mc\d{5})(_\d{3})?-\d{3}-(#{container_codes})\d{4}-\d{3}([A-Z])?-\d{3}(_\d{4})?$/ # NCSU specific
+        # eadid        series box/container            folder       sequence   page
+        /^([a-z0-9_]*)-\d{3}-(#{container_codes})\d{4}-\d{3}([A-Z])?-\d{3}(_\d{4})?$/
+      end
 
       def validates_format_of_mead
         validates do |instance|        
           instance.errors[:mead] = "cant't be blank" if instance.mead.blank?
           # check the format of the whole thing
-          # ua023_031-001-cb0003-005-001
-          container_codes = Mead::CONTAINER_MAPPING.keys.join('|') 
-          # FIXME: generalize for other institutions
-          regexp = /^(ua\d{3}|mc\d{5})(_\d{3})?-\d{3}-(#{container_codes})\d{4}-\d{3}([A-Z])?-\d{3}(_\d{4})?$/
-          #puts regexp
-          unless instance.mead.to_s =~ regexp
+          # ua023_031-001-cb0003-005-001          
+          unless instance.mead.to_s =~ format_regexp
             instance.errors[:mead] = 'Does not match regular expression.'
           end
         end
