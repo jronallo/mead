@@ -1,7 +1,14 @@
 = mead
 
+Metadata from Encoded Archival Description.
+
 Example code for creating identifiers for containers in EAD XML and for extracting
 metadata from EAD XML based on such container identifiers.
+
+== TODO
+
+- Make validations work for other institutions eadid formats.
+- Get more examples for more tests.
 
 == Note on Patches/Pull Requests
  
