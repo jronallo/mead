@@ -1,0 +1,92 @@
+require 'helper'
+
+class TestMeadUA023_006 < Test::Unit::TestCase
+
+  context "a mead from ua023_006 faculty and staff" do
+    setup do
+      @mead = 'ua023_006-002-bx0001-007-001'
+    end
+
+    context "parsing a mead from ua023_006" do
+      setup do
+        @result = Mead::Identifier.new(@mead, File.open('test/ead/ua023_006.xml')) #this is where processing
+      end
+
+      should "produce expected output of eadid" do
+        assert_equal @result.eadid, 'ua023_006'
+      end
+
+      should "produce the expected series" do
+        assert_equal @result.series, '2'
+      end
+
+      should "produce the expected container" do
+        expected = {:type=> 'box', :number => '1'}
+        assert_equal expected, @result.container
+      end
+
+      should "produce the expected folder" do
+        assert_equal @result.folder, '7'
+      end
+
+      should "produce the expected sequence" do
+        assert_equal @result.sequence, '1'
+      end
+    end
+
+    context "extracting metadata from a mead" do
+      setup do
+        @result = Mead::Identifier.new(@mead, File.open('test/ead/ua023_006.xml'))
+        @extractor = Mead::Extractor.new(@result)
+        @file = File.open('test/ead/ua023_006.xml')
+      end
+
+      should "be able to create an extractor" do
+        assert_equal @extractor.class, Mead::Extractor
+      end
+
+      should "convert a string to a mead object" do
+        assert_equal @extractor.mead.class, Mead::Identifier
+      end
+
+      context "should give back the metadata" do
+        setup do
+          @result = @extractor.extract
+        end
+
+        should "extract the item's unittitle" do
+          assert_equal 'Faculty and Staff', @extractor.stack[0][:unittitle]
+        end
+
+        should "extract the item's unitdate" do
+          assert_nil @extractor.stack[0][:unitdate]
+        end
+
+        should "extract the parent unittitle" do
+          assert_equal "Faculty and Staff", @extractor.stack[1][:unittitle]
+        end
+
+        should "extract the parent unitdate" do
+          assert_equal "circa 1900-1988", @extractor.stack[1][:unitdate]
+        end
+
+        should "only extract up to the series level" do
+          assert_equal [
+            {:unittitle=>"Faculty and Staff", :unitdate=>nil, :level => 'file',
+            :unitid => nil, :item_location => 'Box 1, Folder 7'},
+            {:unittitle=>"Faculty and Staff", :unitdate=>"circa 1900-1988",
+              :level => 'series', :unitid => nil,
+              :series_number => 2
+            }
+          ], @extractor.stack
+        end
+
+      end
+
+    end
+
+
+
+  end
+
+end

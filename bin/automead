@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'pp'
+require 'rubygems'
+require 'mead'
+
+
+mead = Mead::Identifier.new(ARGV[0], ARGV[1])
+pp Mead::Extractor.new(mead).extract
+# => 

@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ead xsi:schemaLocation="urn:isbn:1-931666-22-9 http://www.loc.gov/ead/ead.xsd" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns="urn:isbn:1-931666-22-9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <eadheader findaidstatus="Completed" repositoryencoding="iso15511" countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b">
+        <eadid url="http://www.lib.ncsu.edu/findingaids/ua023_006">ua023_006</eadid>
+        <filedesc>
+            <titlestmt>
+                <titleproper>Guide to the University Archives Photograph Collection, College of Agriculture and Life Sciences Photographs, 
+                    <date>circa 1900 - 1992</date>
+                    <num>UA 023.006</num>
+                </titleproper>
+                <author>Finding aid prepared by Processed by: Aaron Cusick; Encoded by: Aaron Cusick</author>
+            </titlestmt>
+            <publicationstmt>
+                <publisher>Special Collections Research Center</publisher>
+                <date>2009 April</date>
+            </publicationstmt>
+        </filedesc>
+        <profiledesc>
+            <creation>This finding aid was produced using the Archivists' Toolkit
+                <date>2009-07-09T09:13-0400</date>
+            </creation>
+            <langusage>English</langusage>
+            <descrules>Describing Archives: A Content Standard</descrules>
+        </profiledesc>
+    </eadheader>
+    <archdesc level="subgrp">
+        <did>
+            <unittitle>University Archives Photograph Collection, College of Agriculture and Life Sciences Photographs</unittitle>
+            <unitid>UA 023.006</unitid>
+            <repository>
+                <corpname>Special Collections Research Center</corpname>
+            </repository>
+            <langmaterial>
+                <language langcode="eng"/>
+            </langmaterial>
+            <physdesc>
+                <extent>1.0 Linear feet</extent>
+                <extent>2 archival boxes</extent>
+            </physdesc>
+            <unitdate normal="1980/1987" type="bulk">Bulk, 1980-1987</unitdate>
+            <unitdate normal="1900/1992" type="inclusive">circa 1900-1992</unitdate>
+            <physdesc id="ref67" label="General Physical Description">2 archival boxes</physdesc>
+            <abstract id="ref71" label="Abstract">As a land-grant institution, North Carolina State University has had agricultural study as an integral part of instruction since its beginning in 1887. In 1917, the first dean of agriculture took office, and the School of Agriculture was established in 1923. The name was changed to School of Agriculture and Life Sciences in 1964, and finally to College of Agriculture and Life Sciences in 1987. As of 2009, the College consists of 22 academic and extension departments, and runs the North Carolina Agricultural Research Service, the current name of the former Agricultural Experiment Station. The College continues to strive to meet its three primary functions -- teaching, research, and extension -- as first laid out over a century ago.</abstract>
+            <abstract id="ref65" label="Abstract">The University Archives Photograph Collection, College of Agriculture and Life Sciences Photographs contain photographs, negatives, and contact sheets documenting the people, departments, research, and activities relating to the College. The photographs are organized into the following series: General, Faculty and Staff, Buildings, Laboratories, Equipment and Machinery, Students – General, Students – Academic Life, Agriculture, Livestock, Biological Science, Environmental Science, Food Science, Gifts and Awards, Exhibitions and Displays, Agricultural Fair, Agricultural Information, F. H. Jeter, National Farm and Home Tour, Research, Other Programs, and Communication Services. For photographs of Agricultural Extension and Research Services, see UA 023.007.</abstract>
+            <physloc id="ref74" label="Location">For current information on the location of these materials, please consult the Special Collections Research Center Reference Staff.</physloc>
+        </did>
+        <processinfo id="ref68">
+            <head>Processing Information</head>
+            <p>Processed by Aaron Cusick, 2009 April; Encoded by Aaron Cusick, 2009 April</p>
+        </processinfo>
+        <prefercite id="ref69">
+            <head>Preferred Citation</head>
+            <p>[Identification of item], University Archives Photograph Collection, College of Agriculture and Life Sciences Photographs, UA 023.006, Special Collections Research Center, North Carolina State University Libraries, Raleigh, NC</p>
+        </prefercite>
+        <userestrict id="ref66">
+            <head>Copyright Notice</head>
+            <p>The nature of the NCSU Libraries' Special Collections means that copyright or other information about restrictions may be difficult or even impossible to determine despite reasonable efforts. The NCSU Libraries claims only physical ownership of most Special Collections materials.</p>
+            <p>The materials from our collections are made available for use in research, teaching, and private study, pursuant to U.S. Copyright law. The user must assume full responsibility for any use of the materials, including but not limited to, infringement of copyright and publication rights of reproduced materials. Any materials used for academic research or otherwise should be fully credited with the source.</p>
+        </userestrict>
+        <bioghist id="ref64">
+            <head>Historical Note</head>
+            <p>As a land-grant institution, North Carolina State University has had agricultural study as an integral part of instruction since its beginning in 1887. In 1917, the first dean of agriculture took office, and the School of Agriculture was established in 1923. The name was changed to School of Agriculture and Life Sciences in 1964, and finally to College of Agriculture and Life Sciences in 1987.</p>
+            <p>The earliest courses of at NCSU were only in agriculture and mechanics, with classes in the former category consisting of "general agriculture, horticulture, arboriculture, and botany." Gradually, as the curriculum expanded, sets of classes were organized into "faculties" and then departments. Professors named to head these faculties or departments were usually given titles according to their specialty, such as Arborist or Agronomist. Additionally, experimental and practical work at the North Carolina Experiment Station and the Extension Service was increasingly undertaken by State College personnel.</p>
+            <p>With the reorganization of campus and academic administration came a shuffling of the curriculum within the new Agricultural School. Programs, or "instructional areas" were reduced to six: Agronomy, Animal Industry, Botany, Horticulture, Poultry Science, and Zoology. At the same time, work at the Experiment Station and in the Extension Service was more fully integrated into these programs, and cooperation among the three branches of the School took off. This situation remained largely unchanged until the creation of a Forestry program in 1929, which eventually became the Division of Forestry in 1931. This name change resulted in another one, when in 1932 the School of Agriculture became the School of Agriculture and Forestry.</p>
+            <p>New programs were added through the 1930s and 1940s, but the organization of the School remained largely unchanged. Several changes occurred in 1950, however. The Division of Forestry was split from Agriculture, to become the new School of Forestry, with Agriculture reverting to its old designation, the School of Agriculture. The other change was the creation that same year of the Division of Biological Sciences, combining the Faculties of Botany, Entomology, Plant Pathology, and Zoology, adding Genetics in 1951. This set-up continued until 1958, when the Division was disbanded and its constituent parts granted Department status as individual units within the School of Agriculture. The 1950s also saw dramatic increases in budgets for research and teaching, and the first international effort for the School, the Peru Project, which started in 1955.</p>
+            <p>The 1960s brought another decade of change to the School, not least of which was another name change in 1964, becoming the School of Agriculture and Life Sciences. One prompt for the new name was an increase in the importance and development of the biological sciences, prompting the creation of the Institute of Biological Sciences in 1962, which in large part succeeded the disbanded Division of Biological Sciences. The Agricultural Policy Institute was created in 1960 in conjunction with the Kellogg Foundation, and worked with agricultural institutions across the south to address and mold public policy issues regarding southern agriculture.</p>
+            <p>The recent decades have seen steady growth in physical space, students, research, and funding. In 1987, a final name change occurred, and the School of Agriculture and Life Sciences became the College of Agriculture and Life Sciences. In 2006 the Department of Botany was renamed the Department of Plant Biology. As of 2009, the College consists of 22 academic and extension departments, and runs the North Carolina Agricultural Research Service, the current name of the former Agricultural Experiment Station. The College continues to strive to meet its three primary functions -- teaching, research, and extension -- as first laid out over a century ago.</p>
+        </bioghist>
+        <scopecontent id="ref1">
+            <head>Scope and Content Note</head>
+            <p>The University Archives Photograph Collection, College of Agriculture and Life Sciences Photographs contain photographs, negatives, and contact sheets documenting the people, departments, research, and activities relating to the College. The organized into the following series: General, Faculty and Staff, Buildings, Laboratories, Equipment and Machinery, Students – General, Students – Academic Life, Agriculture, Livestock, Biological Science, Environmental Science, Food Science, Gifts and Awards, Exhibitions and Displays, Agricultural Fair, Agricultural Information, F. H. Jeter, National Farm and Home Tour, Research, Other Programs, and Communication Services. For photographs of Agricultural Extension and Research Services see UA 023.007.</p>
+        </scopecontent>
+        <relatedmaterial id="ref72">
+            <head>Related Material</head>
+            <p>UA 023.007 Agricultural Extention and Research Service Photographs</p>
+        </relatedmaterial>
+        <accessrestrict id="ref73">
+            <head>Restrictions to Access</head>
+            <p>Collection is open for research; access requires at least 24 hours advance notice.</p>
+        </accessrestrict>
+        <userestrict id="ref75">
+            <head>Confidentiality Notice</head>
+            <p>This collection may contain materials with sensitive or confidential information that is protected under federal or state right to privacy laws and regulations. Researchers are advised that the disclosure of certain information pertaining to identifiable living individuals represented in this collection without the consent of those individuals may have legal ramifications (e.g., a cause of action under common law for invasion of privacy may arise if facts concerning an individual's private life are published that would be deemed highly offensive to a reasonable person) for which North Carolina State University assumes no responsibility.</p>
+        </userestrict>
+        <controlaccess>
+            <persname rules="aacr" source="naf">Jeter, F. H. (Frank Hamilton), 1891-1955</persname>
+            <corpname rules="aacr" source="naf">North Carolina State University--Departments--History.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University--History--20th century.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University--Students--History.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. College of Agriculture and Life Sciences--Faculty--History.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. College of Agriculture and Life Sciences--History.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. College of Agriculture and Life Sciences--Photographs.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. College of Agriculture and Life Sciences.</corpname>
+            <corpname rules="aacr" source="local">North Carolina State University. Dept. of Agronomy--History.</corpname>
+            <corpname rules="aacr" source="local">North Carolina State University. Dept. of Animal Science.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Botany--History.</corpname>
+            <corpname rules="aacr" source="local">North Carolina State University. Dept. of Communication Services.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Crop Science.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Entomology.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Food Science.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Horticultural Science.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Plant Pathology.</corpname>
+            <corpname rules="aacr" source="local">North Carolina State University. Dept. of Zoology.</corpname>
+            <corpname rules="aacr" source="naf">North Carolina State University. Soil Science Dept.</corpname>
+            <corpname rules="aacr" source="naf">Southeastern Plant Environment Laboratory.</corpname>
+            <subject source="lcsh">Agriculture--North Carolina--History--20th century</subject>
+            <subject source="lcsh">Agriculture--North Carolina--Photographs</subject>
+            <subject source="lcsh">Agriculture--Research--North Carolina</subject>
+            <subject source="lcsh">Agriculture--Study and teaching (Higher)--North Carolina</subject>
+            <subject source="lcsh">Botany--Research--North Carolina</subject>
+            <subject source="lcsh">Botany--Study and teaching--North Carolina</subject>
+            <subject source="lcsh">Cattle--Study and teaching--North Carolina</subject>
+            <subject source="lcsh">Chickens</subject>
+            <subject source="lcsh">Corn</subject>
+            <subject source="lcsh">Cotton</subject>
+            <subject source="lcsh">Crop science--Research--North Carolina--History</subject>
+            <subject source="lcsh">Crops</subject>
+            <subject source="lcsh">Dairy farms</subject>
+            <subject source="lcsh">Dairying</subject>
+            <subject source="lcsh">Entomology--Research--North Carolina</subject>
+            <subject source="lcsh">Entomology--Study and teaching--North Carolina</subject>
+            <subject source="lcsh">Farmers--North Carolina</subject>
+            <subject source="lcsh">Forestry schools and education--North Carolina</subject>
+            <subject source="lcsh">Forests and forestry--Research--North Carolina</subject>
+            <subject source="lcsh">Grain</subject>
+            <subject source="lcsh">Horticulture--Research--North Carolina</subject>
+            <subject source="lcsh">Horticulture--Study and teaching (Higher)--North Carolina</subject>
+            <subject source="lcsh">Livestock</subject>
+            <subject source="lcsh">Livestock--Study and teaching--North Carolina</subject>
+            <genreform source="lctgm">Photographs</genreform>
+            <subject source="lcsh">Poultry</subject>
+            <subject source="lcsh">Poultry--Study and teaching (Higher)--North Carolina</subject>
+            <subject source="lcsh">Soil science--Research--North Carolina</subject>
+            <subject source="lcsh">Swine--Study and teaching--North Carolina</subject>
+            <subject source="lcsh">Tobacco farmers</subject>
+            <subject source="lcsh">Tobacco industry--North Carolina--History</subject>
+            <subject source="lcsh">Tobacco workers--North Carolina</subject>
+            <subject source="lcsh">Tobacco--North Carolina</subject>
+            <subject source="lcsh">Tobacco--Research--North Carolina</subject>
+            <subject source="lcsh">Zoology--Study and teaching--North Carolina</subject>
+        </controlaccess>
+        <dsc>
+            <c01 id="ref2" level="series">
+                <did>
+                    <unittitle>General</unittitle>
+                    <unitdate normal="1982/1984" type="bulk">Bulk, 1982-1984</unitdate>
+                    <unitdate normal="1920/1994" type="inclusive">circa 1920-1994</unitdate>
+                </did>
+                <c02 id="ref3" level="file">
+                    <did>
+                        <unittitle>Non-University Agriculture (moved from UA 023.024)</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">1</container>
+                    </did>
+                </c02>
+                <c02 id="ref4" level="file">
+                    <did>
+                        <unittitle>SALS Revue, Spring 1982</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">2</container>
+                    </did>
+                </c02>
+                <c02 id="ref5" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">3</container>
+                    </did>
+                </c02>
+                <c02 id="ref6" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">4</container>
+                    </did>
+                </c02>
+                <c02 id="ref7" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">5</container>
+                    </did>
+                </c02>
+                <c02 id="ref8" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">6</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref9" level="series">
+                <did>
+                    <unittitle>Faculty and Staff</unittitle>
+                    <unitdate normal="1900/1988" type="inclusive">circa 1900-1988</unitdate>
+                </did>
+                <c02 id="ref10" level="file">
+                    <did>
+                        <unittitle>Faculty and Staff</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">7</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref11" level="series">
+                <did>
+                    <unittitle>Buildings</unittitle>
+                    <unitdate normal="1968/1970" type="inclusive">1968, 1970, undated</unitdate>
+                </did>
+                <c02 id="ref12" level="file">
+                    <did>
+                        <unittitle>Food Science Building and Phytotron</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">8</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref13" level="series">
+                <did>
+                    <unittitle>Laboratories</unittitle>
+                    <unitdate normal="1946/1946" type="bulk">Bulk, 1946</unitdate>
+                    <unitdate normal="1920/1976" type="inclusive">circa 1920,1921,1946,1976,</unitdate>
+                </did>
+                <c02 id="ref14" level="file">
+                    <did>
+                        <unittitle>Laboratories</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">9</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref15" level="series">
+                <did>
+                    <unittitle>Equipment and Machinery</unittitle>
+                    <unitdate>1915,1936</unitdate>
+                </did>
+                <c02 id="ref16" level="file">
+                    <did>
+                        <unittitle>Equipment and Machinery</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">10</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref17" level="series">
+                <did>
+                    <unittitle>Students. General</unittitle>
+                    <unitdate normal="1909/1950" type="inclusive">1909,1939,1941,1949-1950</unitdate>
+                </did>
+                <c02 id="ref18" level="file">
+                    <did>
+                        <unittitle>Students</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">11</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref19" level="series">
+                <did>
+                    <unittitle>Students. Academic Life</unittitle>
+                    <unitdate normal="1920/1948" type="inclusive">circa 1920,1936,1937,1948</unitdate>
+                </did>
+                <c02 id="ref20" level="file">
+                    <did>
+                        <unittitle>Students</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">12</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref21" level="series">
+                <did>
+                    <unittitle>Agriculture</unittitle>
+                    <unitdate normal="1902/1974" type="inclusive">1902,1938,1941,1946,1961,1962,circa 1970,1970,1974, undated</unitdate>
+                </did>
+                <c02 id="ref22" level="file">
+                    <did>
+                        <unittitle>Agronomy Department</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">13</container>
+                    </did>
+                </c02>
+                <c02 id="ref23" level="file">
+                    <did>
+                        <unittitle>Horticulture</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">14</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref24" level="series">
+                <did>
+                    <unittitle>Livestock</unittitle>
+                    <unitdate normal="1900/1960" type="inclusive">circa 1900,1928,1950, circa 1960</unitdate>
+                </did>
+                <c02 id="ref25" level="file">
+                    <did>
+                        <unittitle>Animal Science</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">15</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref26" level="series">
+                <did>
+                    <unittitle>Biological Science</unittitle>
+                    <unitdate normal="1954/1960" type="bulk">Bulk, 1954-1960</unitdate>
+                    <unitdate normal="1909/1980" type="inclusive">1909-1980</unitdate>
+                </did>
+                <c02 id="ref27" level="file">
+                    <did>
+                        <unittitle>Botany and Plant Pathology</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">16</container>
+                    </did>
+                </c02>
+                <c02 id="ref28" level="file">
+                    <did>
+                        <unittitle>Zoology Department</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">17</container>
+                    </did>
+                </c02>
+                <c02 id="ref29" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">18</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref30" level="series">
+                <did>
+                    <unittitle>Environmental Science</unittitle>
+                    <unitdate normal="1930/1970" type="inclusive">circa 1930,1938-1939, circa 1970</unitdate>
+                </did>
+                <c02 id="ref31" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">19</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref32" level="series">
+                <did>
+                    <unittitle>Food Science</unittitle>
+                    <unitdate normal="1947/1947" type="bulk">Bulk, 1947</unitdate>
+                    <unitdate normal="1947/1963" type="inclusive">1947-1963</unitdate>
+                </did>
+                <c02 id="ref33" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">1</container>
+                        <container type="Folder">20</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref34" level="series">
+                <did>
+                    <unittitle>Gifts and Awards</unittitle>
+                    <unitdate normal="1985/1985" type="bulk">Bulk, 1985</unitdate>
+                    <unitdate normal="1981/1992" type="inclusive">1981-1992</unitdate>
+                </did>
+                <c02 id="ref35" level="file">
+                    <did>
+                        <unittitle>North Carolina Safety Council Awards</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">1</container>
+                        <unitdate>1981-1992</unitdate>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref36" level="series">
+                <did>
+                    <unittitle>Exhibitions and Displays</unittitle>
+                    <unitdate normal="1984/1984" type="bulk">Bulk, 1984</unitdate>
+                    <unitdate normal="1922/1984" type="inclusive">1922-1984, undated</unitdate>
+                </did>
+                <c02 id="ref37" level="file">
+                    <did>
+                        <unittitle>Department of Plant Pathology History Display</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">2</container>
+                        <unitdate>1976</unitdate>
+                    </did>
+                </c02>
+                <c02 id="ref38" level="file">
+                    <did>
+                        <unittitle>Exhibtions and Displays</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">3</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref39" level="series">
+                <did>
+                    <unittitle>Agricultural Fair</unittitle>
+                    <unitdate normal="1927/1927" type="bulk">Bulk, 1927</unitdate>
+                    <unitdate normal="1920/1940" type="inclusive">circa 1920-1940, undated</unitdate>
+                </did>
+                <c02 id="ref40" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">4</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref41" level="series">
+                <did>
+                    <unittitle>Agricultural Information</unittitle>
+                    <unitdate normal="1980/1980" type="bulk">Bulk, 1980</unitdate>
+                    <unitdate normal="1963/1980" type="inclusive">1963,1980</unitdate>
+                </did>
+                <c02 id="ref42" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">5</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref43" level="series">
+                <did>
+                    <unittitle>F. H. Jeter</unittitle>
+                    <unitdate>circa 1940</unitdate>
+                </did>
+                <c02 id="ref44" level="file">
+                    <did>
+                        <unittitle>F. H. Jeter</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">6</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref45" level="series">
+                <did>
+                    <unittitle>National Farm and Home Tour</unittitle>
+                    <unitdate>circa 1940</unitdate>
+                </did>
+                <c02 id="ref46" level="file">
+                    <did>
+                        <unittitle>NBC Radio Broadcast</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">7</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref47" level="series">
+                <did>
+                    <unittitle>Research</unittitle>
+                    <unitdate normal="1977/1977" type="bulk">Bulk, 1977</unitdate>
+                    <unitdate normal="1950/1987" type="inclusive">circa 1950-1987, undated</unitdate>
+                </did>
+                <c02 id="ref48" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">8</container>
+                    </did>
+                </c02>
+                <c02 id="ref49" level="file">
+                    <did>
+                        <unittitle>General</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">9</container>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref50" level="series">
+                <did>
+                    <unittitle>Other Programs</unittitle>
+                    <unitdate normal="1987/1987" type="bulk">Bulk, 1987</unitdate>
+                    <unitdate normal="1987/1987">1987</unitdate>
+                </did>
+                <c02 id="ref51" level="file">
+                    <did>
+                        <unittitle>Science in the Classroom</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">10</container>
+                        <unitdate>1987</unitdate>
+                    </did>
+                </c02>
+            </c01>
+            <c01 id="ref52" level="series">
+                <did>
+                    <unittitle>Communication Services</unittitle>
+                    <unitdate normal="1984/1984" type="bulk">Bulk, 1984</unitdate>
+                    <unitdate normal="1959/1989" type="inclusive">1959-1989, undated</unitdate>
+                </did>
+                <c02 id="ref54" level="file">
+                    <did>
+                        <unittitle>F-S</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">11</container>
+                    </did>
+                    <scopecontent id="ref53">
+                        <head>Scope and Contents note</head>
+                        <p>Fellowships, Greenhouse Tomatoes, Hog Farming, People, Pigs, Soil</p>
+                    </scopecontent>
+                </c02>
+                <c02 id="ref56" level="file">
+                    <did>
+                        <unittitle>S</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">12</container>
+                    </did>
+                    <scopecontent id="ref55">
+                        <head>Scope and Contents note</head>
+                        <p>Soil, Strawberries, Swine</p>
+                    </scopecontent>
+                </c02>
+                <c02 id="ref58" level="file">
+                    <did>
+                        <unittitle>T</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">13</container>
+                    </did>
+                    <scopecontent id="ref57">
+                        <head>Scope and Contents note</head>
+                        <p>Target 2, Tobacco</p>
+                    </scopecontent>
+                </c02>
+                <c02 id="ref60" level="file">
+                    <did>
+                        <unittitle>T</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">14</container>
+                    </did>
+                    <scopecontent id="ref59">
+                        <head>Scope and Contents note</head>
+                        <p>Tobacco</p>
+                    </scopecontent>
+                </c02>
+                <c02 id="ref61" level="file">
+                    <did>
+                        <unittitle>T-W, Miscellaneous</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">15</container>
+                    </did>
+                    <scopecontent id="ref62">
+                        <head>Scope and Content Note</head>
+                        <p>Tobacco, Tomatoes, Turf Grass, Veterinary Medical Association, Watermelon, Weeds, Miscellaneous</p>
+                    </scopecontent>
+                </c02>
+                <c02 id="ref63" level="file">
+                    <did>
+                        <unittitle>Research Station Descriptions</unittitle>
+                        <container type="Box">2</container>
+                        <container type="Folder">16</container>
+                    </did>
+                </c02>
+            </c01>
+        </dsc>
+    </archdesc>
+</ead>

@@ -1,0 +1,91 @@
+require 'helper'
+
+class TestMeadUA023_006B < Test::Unit::TestCase
+
+  context "a mead from ua023_006 buildings" do
+    setup do
+      @mead = 'ua023_006-003-bx0001-008-001'
+    end
+
+    context "parsing a mead from ua023_006" do
+      setup do
+        @result = Mead::Identifier.new(@mead, File.open('test/ead/ua023_006.xml')) #this is where processing
+      end
+
+      should "produce expected output of eadid" do
+        assert_equal @result.eadid, 'ua023_006'
+      end
+
+      should "produce the expected series" do
+        assert_equal @result.series, '3'
+      end
+
+      should "produce the expected container" do
+        expected = {:type=> 'box', :number => '1'}
+        assert_equal expected, @result.container
+      end
+
+      should "produce the expected folder" do
+        assert_equal @result.folder, '8'
+      end
+
+      should "produce the expected sequence" do
+        assert_equal @result.sequence, '1'
+      end
+    end
+
+    context "extracting metadata from a mead" do
+      setup do
+        @result = Mead::Identifier.new(@mead, File.open('test/ead/ua023_006.xml'))
+        @extractor = Mead::Extractor.new(@result)
+      end
+
+      should "be able to create an extractor" do
+        assert_equal @extractor.class, Mead::Extractor
+      end
+
+      should "convert a string to a mead object" do
+        assert_equal @extractor.mead.class, Mead::Identifier
+      end
+
+      context "should give back the metadata" do
+        setup do
+          @result = @extractor.extract
+        end
+
+        should "extract the item's unittitle" do
+          assert_equal 'Food Science Building and Phytotron', @extractor.stack[0][:unittitle]
+        end
+
+        should "extract the item's unitdate" do
+          assert_nil @extractor.stack[0][:unitdate]
+        end
+
+        should "extract the parent unittitle" do
+          assert_equal "Buildings", @extractor.stack[1][:unittitle]
+        end
+
+        should "extract the parent unitdate" do
+          assert_equal "1968, 1970, undated", @extractor.stack[1][:unitdate]
+        end
+
+        should "only extract up to the series level" do
+          assert_equal [
+            {:unittitle=>"Food Science Building and Phytotron", :unitdate=>nil,
+            :level => 'file', :unitid => nil, :item_location => 'Box 1, Folder 8'},
+            {:unittitle=>"Buildings", :unitdate=>"1968, 1970, undated",
+              :level => 'series', :unitid => nil,
+              :series_number => 3
+            }
+          ], @extractor.stack
+        end
+
+      end
+
+    end
+
+
+
+  end
+
+end
