@@ -1,7 +1,8 @@
 module Mead
   class Identifier
 
-    attr_accessor :mead, :eadid, :series, :container, :folder, :sequence, :page, :ead_location
+    attr_accessor :mead, :eadid, :series, :container, :folder, :sequence, :page, 
+      :ead_location, :metadata
     include Mead::Validations
     validates_format_of_mead
     validates_presence_of_mead
@@ -10,6 +11,7 @@ module Mead
     # If a location is given then extraction can take place
     def initialize(mead, ead_location=nil)
       @mead = mead
+      @metadata = nil
       parse_mead 'eadid', 'series', 'container', 'folder', 'sequence'
       @ead_location = parse_ead_location(ead_location)
       split_container
@@ -54,6 +56,7 @@ module Mead
       return nil if loc.nil?
       if loc
         if loc.is_a? File 
+          loc.rewind if loc.eof?
           @ead_location = loc
         elsif loc.include?('http://')
           if loc.include?(@eadid)
@@ -63,6 +66,11 @@ module Mead
           end
         end
       end
+    end
+    
+    def extract
+      @metadata = Mead::Extractor.new(self).extract
+      self
     end
 
 #    def replace_underscores(*args)

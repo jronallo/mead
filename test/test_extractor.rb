@@ -10,31 +10,43 @@ class TestMeadExtractor < Test::Unit::TestCase
         {:level=>"subseries", :unitdate=>nil, :unitid=>nil, :unittitle=>"Students"},
         {:level=>"series", :unitdate=>nil, :series_number=>8, :unitid=>"Series 8", :unittitle=>"People"}]
     end
+    
     should "produce a good extraction with a filehandle location for the EAD" do
       fh   = File.open('test/ead/ua023_031.xml')
       mead = Mead::Identifier.new(@identifier, fh)
       assert_equal @expected_1, Mead::Extractor.new(mead).extract
     end
+    
     should "producde a good extraction with a remote location EAD containing no eadid" do
       assert_equal @expected_1, Mead::Extractor.new(Mead::Identifier.new(@identifier, 'http://www.lib.ncsu.edu/findingaids')).extract      
     end
     should 'produce a good extraction with a remote location EAD with a full URL' do
       assert_equal @expected_1, Mead::Extractor.new(Mead::Identifier.new(@identifier, 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml')).extract      
     end
-        
-    should 'handle empty folder properly' do
-      expected = [{:unittitle=>"Friends Church",
-                  :item_location=>"flatfolder 52",
-                  :unitdate=>"1927",
-                  :level=>"file",
-                  :unitid=>"903"},
-                 {:series_number=>1,
-                  :unittitle=>"Drawings",
-                  :unitdate=>"1917-1980",
-                  :level=>"series",
-                  :unitid=>"MC 240 Series 1"}]
-      mead = Mead::Identifier.new('mc00240-001-ff0052-000-001', File.open('test/ead/mc00240.xml'))
-      assert_equal expected, Mead::Extractor.new(mead).extract   
+       
+       
+    context 'mc00240-001-ff0052-000-001' do
+      setup do
+        @expected_mc00240 = [{:unittitle=>"Friends Church",
+                    :item_location=>"flatfolder 52",
+                    :unitdate=>"1927",
+                    :level=>"file",
+                    :unitid=>"903"},
+                   {:series_number=>1,
+                    :unittitle=>"Drawings",
+                    :unitdate=>"1917-1980",
+                    :level=>"series",
+                    :unitid=>"MC 240 Series 1"}]  
+      end
+      should 'handle empty folder properly' do
+        mead = Mead::Identifier.new('mc00240-001-ff0052-000-001', File.open('test/ead/mc00240.xml'))
+        assert_equal @expected_mc00240, Mead::Extractor.new(mead).extract   
+      end
+      
+      should 'cache the extraction within the Mead::Identifier' do
+        mead = Mead::Identifier.new('mc00240-001-ff0052-000-001', File.open('test/ead/mc00240.xml')).extract
+        assert_equal @expected_mc00240, mead.metadata        
+      end
     end
     
 

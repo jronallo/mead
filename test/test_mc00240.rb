@@ -36,7 +36,7 @@ class TestMeadMC00240 < Test::Unit::TestCase
     context "extracting metadata from a mead" do
       setup do
         @extractor = Mead::Extractor.new(@mead)
-        @file = File.open('test/ead/mc00240.xml')
+        #@file = File.open('test/ead/mc00240.xml')
       end
 
       should "be able to create an extractor" do
@@ -50,6 +50,11 @@ class TestMeadMC00240 < Test::Unit::TestCase
       context "should give back the metadata" do
         setup do
           @result = @extractor.extract
+        end
+        
+        should "Cache the metadata in the Mead::Identifier" do
+          mead = Mead::Identifier.new(@mead_id, @fh).extract
+          assert_equal @result, mead.metadata  
         end
 
         should "extract the item's unittitle" do

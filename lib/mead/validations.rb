@@ -48,28 +48,31 @@ module Mead
       end
 
       def validates_format_of_mead
-        validates do |instance|        
-          instance.errors[:mead] = "cant't be blank" if instance.mead.blank?
+        validates do |instance|  
+          add_error(instance, :mead, "Can't be blank.") if instance.mead.blank?         
           # check the format of the whole thing
           # ua023_031-001-cb0003-005-001          
           unless instance.mead.to_s =~ format_regexp
-            instance.errors[:mead] = 'Does not match regular expression.'
+            add_error(instance, :mead, 'Does not match regular expression.')
           end
         end
       end
 
       def validates_presence_of_mead
         validates do |instance|
-          begin          
-          extractor = Mead::Extractor.new(instance)
-          result = extractor.extract
+          begin
+          if instance.metadata
+            result = instance.metadata
+          else          
+            result = Mead::Extractor.new(instance).extract
+          end
           if result.blank?
-            instance.errors[:mead] = 'No matching container.'
+            add_error(instance, :mead, 'No matching container.')
           elsif instance.series != result.last[:series_number].to_s
-            instance.errors[:mead] = 'Bad series.'
+            add_error(instance, :mead, 'Bad series.')
           end
           rescue => e
-            instance.errors[:mead] = e
+            add_error(instance, :mead, e)
           end
         end
       end
@@ -78,7 +81,7 @@ module Mead
         validates_attributes(*attributes) do |instance, attribute, value, options|
           if value
             unless value.to_s =~ /\A[+-]?\d+\Z/
-              instance.errors[attribute] = "Not a number."
+              add_error(instance, attribute, "Not a number.")
               next
             end
           end

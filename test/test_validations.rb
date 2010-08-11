@@ -15,7 +15,6 @@ class TestMeadValidations < Test::Unit::TestCase
     end  
 
     should "show ua023_031-001-cb0003-005-001 to be a valid mead" do
-      require 'ruby-debug'; debugger
       mead = Mead::Identifier.new('ua023_031-001-cb0003-005-001', @loc_ua023_031)
       assert mead.valid?
     end
@@ -53,6 +52,11 @@ class TestMeadValidations < Test::Unit::TestCase
     should "show mc00240-001-ff0052-000-001_0002 to be a valid mead with a page" do
       mead = Mead::Identifier.new('mc00240-001-ff0052-000-001_0002', @loc_mc00240)
       #inspect_validation(mead)
+      assert mead.valid?
+    end
+    
+    should "use the cached metadata in the Mead::Identifier instead of making a new extraction request" do
+      mead = Mead::Identifier.new('mc00240-001-ff0052-000-001_0002', @loc_mc00240).extract
       assert mead.valid?
     end
 
