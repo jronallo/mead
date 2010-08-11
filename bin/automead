@@ -3,8 +3,52 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'pp'
 require 'rubygems'
 require 'mead'
+require 'mead/trollop'
+require 'trollop'
+include Mead::TrollopOptions
 
+opts = Trollop::options do
+  banner <<-EOS
+This script takes a mead (an identifier of a particular format) and returns 
+metadata for it.
 
-mead = Mead::Identifier.new(ARGV[0], ARGV[1])
-pp Mead::Extractor.new(mead).extract
-# => 
+Usage Example:
+  automead --mead mc00240-001-ff0052-000-001 --baseurl http://www.lib.ncsu.edu/findingaids --ruby [options]
+
+Default output is pretty printed Ruby. Multiple outputs can be specified.
+
+where options are:
+EOS
+  opt :mead, "A mead-style identifier", :required => true, :type => String
+  opt :baseurl, 'Specify just the base URL for grabbing the EAD XML if it is of the format baseurl/eadid.xml.', :type => String
+  opt :url, 'Specify the whole URL for grabbing the EAD XML.', :type => String
+  opt :file, 'File path to EAD XML.', :type => String
+  opt :ruby, 'Output as pretty printed Ruby. Default.'
+  opt :json, 'Output as JSON'
+end
+
+check_options(opts)
+
+location = get_location(opts)
+
+mead = Mead::Identifier.new(opts[:mead], location)
+
+if mead.valid?
+  pp mead.metadata if opts[:ruby]
+  puts mead.metadata.to_json if opts[:json]
+  if !opts[:ruby] and !opts[:json]
+    pp mead.metadata
+  end
+else
+  response = {}
+  response[:status] = 'Invalid'
+  response.merge!(mead.errors)
+  pp response if opts[:ruby]
+  if opts[:json]
+    response[:mead] = response[:mead].map{|error| error.message }
+    puts response.to_json
+  end
+  if !opts[:ruby] and !opts[:json]
+    pp response
+  end
+end

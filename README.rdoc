@@ -9,6 +9,7 @@ metadata from EAD XML based on such container identifiers.
 
 - Make validations work for other institutions eadid formats.
 - Get more examples for more tests.
+- Better exceptions.
 
 == Author 
 

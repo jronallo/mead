@@ -47,8 +47,7 @@ class TestMeadExtractor < Test::Unit::TestCase
         mead = Mead::Identifier.new('mc00240-001-ff0052-000-001', File.open('test/ead/mc00240.xml')).extract
         assert_equal @expected_mc00240, mead.metadata        
       end
-    end
-    
+    end   
 
   end
   
@@ -60,6 +59,11 @@ class TestMeadExtractor < Test::Unit::TestCase
   should "raise an exception if the extractor tries to extract from a Mead::Identifier without an EAD location set" do
     assert_raise RuntimeError do
       Mead::Extractor.new(Mead::Identifier.new('mc00240-001-ff0052-000-001')).extract
+    end
+  end
+  should "raise an exception when a duplicate Mead::Identifier is found by matching too many nodes" do
+    assert_raise RuntimeError do
+      Mead::Extractor.new(Mead::Identifier.new('mc00240-003-bx0069-000-001', File.open('test/ead/mc00240.xml'))).extract
     end
   end
   

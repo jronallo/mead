@@ -4,7 +4,7 @@ class TestMead < Test::Unit::TestCase
   context "Given an eadid mc00240" do
 
     setup do
-      opts = {:file_handle => File.open('test/ead/mc00240.xml')}
+      opts = {:file => File.open('test/ead/mc00240.xml')}
       @ead = Mead::EAD.new('mc00240', opts) 
       @containers = @ead.containers
     end
@@ -23,6 +23,16 @@ class TestMead < Test::Unit::TestCase
         :series => 3
       }
       assert_equal expected, @containers.last
+    end
+    
+    should "determine this to be an invalid ead not suitable for large scale digitization yet" do
+      assert_equal false, @ead.valid?
+    end
+    should "provide information on the containers with invalid (duplicate) mead identifiers" do
+      assert_equal 47, @ead.invalid.length
+      assert_equal 20, @ead.dups.length
+      expected = {:series=>1, :title=>"Breach, William- Residence", :mead=>"mc00240-001-ff0298-000-001"}
+      assert_equal expected, @ead.invalid.first
     end
 
     context "converted to csv" do
@@ -50,7 +60,7 @@ class TestMead < Test::Unit::TestCase
 
   context "Given an eadid of ua023_031" do
     setup do
-      opts = {:file_handle => File.open('test/ead/ua023_031.xml')}
+      opts = {:file => File.open('test/ead/ua023_031.xml')}
       @ead = Mead::EAD.new('ua023_031', opts)
       @containers = @ead.containers
     end
@@ -76,6 +86,18 @@ class TestMead < Test::Unit::TestCase
       }
       assert_equal expected, @containers.last
     end
+    
+  end
+  
+  context "Given an eadid of mc00310" do
+    setup do
+      opts = {:url => 'http://www.lib.ncsu.edu/findingaids/mc00310.xml'}
+      @ead = Mead::EAD.new('mc00310', opts)
+      @containers = @ead.containers
+    end  
+    should 'determine it to be a valid ead for large scale digitization' do
+      assert @ead.valid?
+    end
   end
 
   context "Given a baseurl and no filehandle for an EAD" do
@@ -85,6 +107,21 @@ class TestMead < Test::Unit::TestCase
     end
     should 'save the baseurl as an instance variable' do
       assert_equal 'http://www.lib.ncsu.edu/findingaids', @ead.baseurl
+    end
+    should 'create information for a stub record for the last container' do
+      containers = @ead.containers
+      expected = {:title=>"Sules V-B on Apple [3] - Grape Study - Set #17", :series=>1, :mead=>"ua023_031-001-cb0006-031-001"}
+      assert_equal expected, containers.first
+    end
+  end
+  
+  context "Given a url and no file or baseurl for an EAD" do
+    setup do
+      opts = {:url => 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml'}
+      @ead = Mead::EAD.new('ua023_031', opts)
+    end
+    should 'save the url to an instance variable' do
+      assert_equal 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml', @ead.url
     end
     should 'create information for a stub record for the last container' do
       containers = @ead.containers

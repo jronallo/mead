@@ -3,5 +3,63 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'pp'
 require 'rubygems'
 require 'mead'
+require 'mead/trollop'
+require 'trollop'
+include Mead::TrollopOptions
+
 #eadid, baseurl
-puts Mead::EAD.new(ARGV[0], :baseurl => ARGV[1]).to_csv
+opts = Trollop::options do
+  banner <<-EOS
+This script takes an EAD XML document and returns mead identifiers and metadata 
+for it. It is possible to validate whether the parsed EAD XML provides unique
+identifiers for all component parts.
+
+Usage Example:
+  ead2meads --url http://www.lib.ncsu.edu/findingaids/mc00240.xml [options]
+
+Default output is pretty printed Ruby. Multiple outputs can be specified.
+
+where options are:
+EOS
+  opt :eadid, 'Eadid of the EAD.', :required => true, :type => String
+  opt :url, 'Specify the whole URL for grabbing the EAD XML.', :type => String
+  opt :file, 'File path to EAD XML.', :type => String
+  opt :ruby, 'Output as pretty printed Ruby.'
+  opt :json, 'Output as JSON'
+  opt :csv, 'Output as CSV. Default.'
+  opt :valid, 'Only outputs the invalid containers.'
+  opt :verbose, 'Verbose output. Used to give invalid counts.'
+end
+
+check_options(opts)
+
+location = get_location_options(opts)
+
+ead = Mead::EAD.new(opts[:eadid], location)
+
+if opts[:valid]
+  if ead.valid?
+    puts 'Valid.'
+  else
+    
+    puts Mead::EAD.to_csv(ead.invalid) if opts[:csv]
+    pp ead.invalid           if opts[:ruby]
+    puts ead.invalid.to_json if opts[:json]
+
+    if !opts[:csv] and !opts[:ruby] and !opts[:json]
+      puts Mead::EAD.to_csv(ead.invalid)
+    end
+    if opts[:verbose]
+      puts 'Number of duplicate meads: ' + ead.dups.length.to_s
+      puts 'Effected Containers: ' + ead.invalid.length.to_s
+    end
+  end
+else
+  puts ead.to_csv             if opts[:csv]
+  pp ead.containers           if opts[:ruby]
+  puts ead.containers.to_json if opts[:json]
+
+  if !opts[:csv] and !opts[:ruby] and !opts[:json]
+    puts ead.to_csv if opts[:csv]
+  end
+end

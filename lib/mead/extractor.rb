@@ -17,6 +17,7 @@ module Mead
       eadxml = get_eadxml
       @doc = Nokogiri::XML(eadxml)
       do_extraction
+      @mead.metadata = @stack # make sure the metadata always gets cached to the identifier
       return @stack
     end
 

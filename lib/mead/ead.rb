@@ -1,20 +1,25 @@
 module Mead
   class EAD
-    attr_accessor :containers, :ead, :baseurl, :file_handle
+    # factor out :baseurl, :file and :url into an options object?
+    attr_accessor :containers, :ead, :baseurl, :file, :url
 
-    # options include :file_handle and :base_url
+    # options include :file and :base_url
     def initialize(eadid, opts={})
       @eadid = eadid
-      @file_handle = opts[:file_handle] || nil
+      @file    = opts[:file] || nil
       @baseurl = opts[:baseurl] || nil
+      @url     = opts[:url] || nil
       @containers = []
       get_ead
       crawl_for_containers     
     end
 
     def get_ead
-      if @file_handle and @file_handle.is_a? File
-        @ead = @file_handle.read
+      if @file and @file.is_a? File
+        @file.rewind if @file.eof?
+        @ead = @file.read
+      elsif @url
+        @ead = open(@url).read
       elsif @baseurl
         @ead = open(File.join(@baseurl, @eadid + '.xml')).read
       end
@@ -93,12 +98,34 @@ module Mead
     end
 
     def to_csv
+      Mead::EAD.to_csv(self.containers)
+    end
+    
+    def self.to_csv(container_list)
       csv_string = FasterCSV.generate do |csv|
         csv << ['mead','title','series']
-        @containers.each do |container|
+        container_list.each do |container|
           csv << [container[:mead], container[:title], container[:series]]
         end
       end
+    end
+    
+    def valid?
+      meads = @containers.collect{|container| container[:mead]}.uniq
+      if meads.length == @containers.length
+        true
+      else
+        false
+      end        
+    end
+    
+    def invalid
+      duplicates = dups
+      @containers.select{|container| duplicates.include?(container[:mead])}
+    end
+    
+    def dups
+      @containers.collect{|container| container[:mead]}.inject({}) {|h,v| h[v]=h[v].to_i+1; h}.reject{|k,v| v==1}.keys.sort
     end
 
   end

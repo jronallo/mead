@@ -2,6 +2,7 @@
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'pp'
 require 'mead'
+require 'trollop'
 
 # NCSU specific format validation
 module Mead
