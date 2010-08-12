@@ -38,6 +38,11 @@ class TestMeadValidations < Test::Unit::TestCase
       mead = Mead::Identifier.new('ua023_031-002-cb0006-031-001', @loc_ua023_031)
       assert_equal false, mead.valid?
     end
+    
+    should "show ua023_031-002-cb0006-031-001 to be well-formed" do
+      mead = Mead::Identifier.new('ua023_031-002-cb0006-031-001', @loc_ua023_031)
+      assert mead.valid_format?
+    end
 
     should "show ua023_031-001-cb0156-031-001 to be well-formed but invalid" do
       mead = Mead::Identifier.new('ua023_031-002-cb0126-031-001', @loc_ua023_031)      

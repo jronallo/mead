@@ -18,24 +18,47 @@ Usage Example:
 
 where options are:
 EOS
-  opt :mead, "A mead-style identifier", :required => true, :type => String
+  opt :mead, "A mead-style identifier", :type => String
+  opt :meadfile, "Path to text file with one mead identifier on each line.", :type => String
   opt :baseurl, 'Specify just the base URL for grabbing the EAD XML if it is of the format baseurl/eadid.xml.', :type => String
   opt :url, 'Specify the whole URL for grabbing the EAD XML.', :type => String
   opt :file, 'File path to EAD XML.', :type => String
   opt :dir, 'Directory to save the barcodes.', :type => String
 end
 
+unless opts[:mead] or opts[:meadfile]
+  Trollop::die 'You must specify either a single mead identifier or a file of identifiers'
+end
+
 check_options(opts)
 location = get_location(opts)
 
-mead = Mead::Identifier.new(opts[:mead], location).extract
-
-barcode = Mead::Barcode.new(mead)
-
-if opts[:dir]
-  Trollop::die 'Directory must exist!' unless File.exists?(opts[:dir])
+if opts[:mead]
+ meads = [opts[:mead]]
+else
+  Trollop::die 'meadfile must be a valid path' unless File.exists?(opts[:meadfile])
+  meads = File.open(opts[:meadfile], 'r').read.split
 end
-directory = opts[:dir] || Dir.pwd
 
-puts barcode.output_label(directory)
+successful_paths = []
+meads.each do |mead_identifier|
+  begin
+    mead = Mead::Identifier.new(mead_identifier, location).extract
+
+    barcode = Mead::Barcode.new(mead)
+
+    if opts[:dir]
+      Trollop::die 'Directory must exist!' unless File.exists?(opts[:dir])
+    end
+    directory = opts[:dir] || Dir.pwd
+
+    label_path = barcode.output_label(directory)
+    successful_paths << label_path
+    puts label_path
+  rescue => e
+    puts mead_identifier + ' ' + e
+  end
+end
+
+#`convert #{successful_paths.join(' ')} -append -antialias output.png`
 

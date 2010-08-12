@@ -10,14 +10,23 @@ module Mead
         validation.call(self)
       end
     end
+    
+    def validate_format
+      errors.clear
+      self.class.format_validations.each do |validation|
+        validation.call(self)
+      end
+    end
 
     def valid?
+      validate_format
       validate
       errors.blank?
     end
 
     def valid_format?
-
+      validate_format
+      errors.blank?      
     end
 
     def errors
@@ -27,6 +36,10 @@ module Mead
     module ClassMethods
       def validations
         @validations ||= []
+      end
+      
+      def format_validations
+        @format_validations ||= []
       end
 
       def add_error(instance, attribute, message)
@@ -48,7 +61,7 @@ module Mead
       end
 
       def validates_format_of_mead
-        validates do |instance|  
+        validates_format do |instance|  
           add_error(instance, :mead, "Can't be blank.") if instance.mead.blank?         
           # check the format of the whole thing
           # ua023_031-001-cb0003-005-001          
@@ -98,6 +111,12 @@ module Mead
       
       def validates(&proc)
         validations << Proc.new{|instance|
+          proc.call(instance)
+        }
+      end
+      
+      def validates_format(&proc)
+        format_validations << Proc.new{|instance|
           proc.call(instance)
         }
       end

@@ -26,7 +26,7 @@ module Mead
       png_path = output_barcode(directory)
       text_path = File.join(directory, @mead.mead + '-text.png')
       label_path = File.join(directory, @mead.mead + '-label.png')
-      `convert -pointsize 24 -background white -fill black label:'#{label_text}' #{text_path}`
+      `convert -font fixed -pointsize 14 -background white -fill black label:'#{label_text}' #{text_path}`
       text_path
       # convert *.png -resize 75% -append output.png
       `convert #{png_path} #{text_path} -append #{label_path}`
@@ -37,7 +37,8 @@ module Mead
     
     def label_text
       text = [@mead.mead]
-      text << @mead.metadata.first[:unittitle]
+      text << @mead.metadata.first[:unittitle][0,55]
+      text.last << '...' if @mead.metadata.first[:unittitle].length > 55
       text << @mead.metadata.first[:item_location]
       text.join('\n')
     end
