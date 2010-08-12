@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'pp'
+require 'rubygems'
+require 'mead'
+require 'mead/trollop'
+require 'trollop'
+include Mead::TrollopOptions
+
+opts = Trollop::options do
+  banner <<-EOS
+This script takes a mead (an identifier of a particular format), creates a 
+barcode and returns the path to the barcode. Gbarcode and RMagick gems must be
+installed for this to work.
+
+Usage Example:
+  mead2barcode --mead mc00240-001-ff0052-000-001 --baseurl http://www.lib.ncsu.edu/findingaids --ruby [options]
+
+where options are:
+EOS
+  opt :mead, "A mead-style identifier", :required => true, :type => String
+  opt :baseurl, 'Specify just the base URL for grabbing the EAD XML if it is of the format baseurl/eadid.xml.', :type => String
+  opt :url, 'Specify the whole URL for grabbing the EAD XML.', :type => String
+  opt :file, 'File path to EAD XML.', :type => String
+  opt :dir, 'Directory to save the barcodes.', :type => String
+end
+
+check_options(opts)
+location = get_location(opts)
+
+mead = Mead::Identifier.new(opts[:mead], location).extract
+
+barcode = Mead::Barcode.new(mead)
+
+if opts[:dir]
+  Trollop::die 'Directory must exist!' unless File.exists?(opts[:dir])
+end
+directory = opts[:dir] || Dir.pwd
+
+puts barcode.output_label(directory)
+

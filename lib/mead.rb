@@ -9,11 +9,7 @@ require 'fastercsv'
 
 require 'active_support'
 
-
-
 module Mead
-  VERSION = '0.0.7'
-
   CONTAINER_MAPPING = {
     'am' => 'album',
     'ab' => 'artifactbox',
@@ -50,10 +46,21 @@ module Mead
     'vt' => 'videotape',
     've' => 'volume'
   }
-
 end
 
 require 'mead/validations'
 require 'mead/identifier'
 require 'mead/extractor'
 require 'mead/ead'
+
+# if gbarcode and rmagick can both be loaded then load mead/barcode
+begin
+  require 'gbarcode'
+  begin
+    require 'RMagick'
+    require 'tempfile'
+    require 'mead/barcode'
+  rescue
+  end  
+rescue
+end

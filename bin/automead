@@ -28,7 +28,6 @@ EOS
 end
 
 check_options(opts)
-
 location = get_location(opts)
 
 mead = Mead::Identifier.new(opts[:mead], location)

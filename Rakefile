@@ -11,6 +11,8 @@ begin
     gem.homepage = "http://github.com/jronallo/mead"
     gem.authors = ["Jason Ronallo"]
     gem.add_development_dependency "shoulda", ">= 0"
+    gem.add_development_dependency "rmagick", ">= 0"
+    gem.add_development_dependency 'gbarcode', ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.add_dependency 'trollop', '>= 0'
   end
