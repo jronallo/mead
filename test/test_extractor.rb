@@ -11,16 +11,16 @@ class TestMeadExtractor < Test::Unit::TestCase
         {:level=>"series", :unitdate=>nil, :series_number=>8, :unitid=>"Series 8", :unittitle=>"People"}]
     end
     
-    should "produce a good extraction with a filehandle location for the EAD" do
+    should "produce a good extraction with a filehandle location for the Ead" do
       fh   = File.open('test/ead/ua023_031.xml')
       mead = Mead::Identifier.new(@identifier, fh)
       assert_equal @expected_1, Mead::Extractor.new(mead).extract
     end
     
-    should "producde a good extraction with a remote location EAD containing no eadid" do
+    should "producde a good extraction with a remote location Ead containing no eadid" do
       assert_equal @expected_1, Mead::Extractor.new(Mead::Identifier.new(@identifier, 'http://www.lib.ncsu.edu/findingaids')).extract      
     end
-    should 'produce a good extraction with a remote location EAD with a full URL' do
+    should 'produce a good extraction with a remote location Ead with a full URL' do
       assert_equal @expected_1, Mead::Extractor.new(Mead::Identifier.new(@identifier, 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml')).extract      
     end
        
@@ -56,7 +56,7 @@ class TestMeadExtractor < Test::Unit::TestCase
       Mead::Extractor.new({})
     end
   end
-  should "raise an exception if the extractor tries to extract from a Mead::Identifier without an EAD location set" do
+  should "raise an exception if the extractor tries to extract from a Mead::Identifier without an Ead location set" do
     assert_raise RuntimeError do
       Mead::Extractor.new(Mead::Identifier.new('mc00240-001-ff0052-000-001')).extract
     end

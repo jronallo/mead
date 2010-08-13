@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+require 'pp'
+
+# does an Mead::Ead validity check on a directory of EADs using the ead2meads tool
+dir = ARGV[0]
+
+valid = []
+invalid = []
+invalid_responses = {}
+
+files = Dir.glob(File.join(dir, '*.xml'))
+puts files.length
+files.each_with_index do |path, i|
+  begin
+    eadid = File.basename(path, '.xml')
+    cmd = File.join(File.dirname(__FILE__), 'ead2meads')
+    response = `#{cmd} --file #{path} --valid`.chomp
+    if response == 'Valid.'
+      puts i.to_s + ' ' + eadid + ': valid'
+      valid << eadid
+    else
+      puts i.to_s + ' ' + eadid + ': !'
+      invalid << eadid
+      invalid_responses[eadid] = response
+    end
+  rescue => e
+    invalid_responses[eadid] = e.backtrace
+  end
+end
+
+puts 'Valid: ' + valid.length.to_s
+puts 'Invalid: ' + invalid.length.to_s
+
+puts 'Show all Invalid?'
+answer = STDIN.gets
+if answer.chomp == 'y'
+  pp invalid.sort
+end
+
+puts 'Show invalid responses?'
+answer = STDIN.gets
+if answer.chomp == 'y'
+  invalid_responses.each do |k,v|
+    puts k
+    puts v.sub("Invalid!\n", '')
+    puts
+  end
+end
+

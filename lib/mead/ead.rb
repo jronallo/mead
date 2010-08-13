@@ -1,20 +1,25 @@
 module Mead
-  class EAD
+  class Ead
     # factor out :baseurl, :file and :url into an options object?
-    attr_accessor :containers, :ead, :baseurl, :file, :url
+    attr_accessor :containers, :ead, :baseurl, :file, :url, :doc, :eadid
 
     # options include :file and :base_url
-    def initialize(eadid, opts={})
-      @eadid = eadid
+    def initialize(opts={})
+      @eadid = opts[:eadid] || nil
       @file    = opts[:file] || nil
       @baseurl = opts[:baseurl] || nil
       @url     = opts[:url] || nil
       @containers = []
+      
       get_ead
+      find_eadid unless @eadid
       crawl_for_containers     
     end
 
     def get_ead
+      if @eadid.nil? and @url.nil? and @file.nil? and @baseurl
+        raise 'Cannot get EAD based on params.'
+      end
       if @file and @file.is_a? File
         @file.rewind if @file.eof?
         @ead = @file.read
@@ -23,11 +28,19 @@ module Mead
       elsif @baseurl
         @ead = open(File.join(@baseurl, @eadid + '.xml')).read
       end
+      @doc = Nokogiri::XML(@ead)  
     end
 
-    def crawl_for_containers
-      doc = Nokogiri::XML(@ead)      
-      c01s = doc.xpath('//xmlns:dsc/xmlns:c01')
+    def find_eadid
+      begin
+        @eadid = @doc.xpath('//xmlns:eadid').first.text
+      rescue => e
+        raise 'Need an eadid and none has been given and it cannot be found in the EAD XML.'
+      end
+    end
+
+    def crawl_for_containers      
+      c01s = @doc.xpath('//xmlns:dsc/xmlns:c01')
       c01s.each_with_index do |c, i|
         dids = c.xpath('.//xmlns:container').map{|c| c.parent}.uniq
         #c.xpath('xmlns:c02/xmlns:did').map do |did|
@@ -71,7 +84,7 @@ module Mead
         container_values << '000'
       elsif containers.length == 2
         container_values << make_box(did.xpath('xmlns:container')[0])
-        container_values<< make_box(did.xpath('xmlns:container')[1],3)
+        container_values << make_box(did.xpath('xmlns:container')[1],3)
       elsif containers.length > 2
         raise "I don't know what to do with more than 2 containers in a did!"
       else
@@ -82,7 +95,7 @@ module Mead
 
     def make_box(container, padding=4)
       padder = "%0" + padding.to_s + 's'
-      text = (padder % container.text).gsub(' ','0').gsub('.','_')
+      text = (padder % container.text).gsub(' ','0').gsub('.','_').gsub('-', ',')
       container_type(container) + text
     end
 
@@ -98,11 +111,16 @@ module Mead
     end
 
     def to_csv
-      Mead::EAD.to_csv(self.containers)
+      Mead::Ead.to_csv(self.containers)
     end
     
     def self.to_csv(container_list)
-      csv_string = FasterCSV.generate do |csv|
+      if CSV.const_defined? :Reader
+        csv_class = FasterCSV # old CSV was loaded
+      else
+        csv_class = CSV # use CSV from 1.9
+      end
+      csv_string = csv_class.generate do |csv|
         csv << ['mead','title','series']
         container_list.each do |container|
           csv << [container[:mead], container[:title], container[:series]]
@@ -125,7 +143,11 @@ module Mead
     end
     
     def dups
-      @containers.collect{|container| container[:mead]}.inject({}) {|h,v| h[v]=h[v].to_i+1; h}.reject{|k,v| v==1}.keys.sort
+      meads.inject({}) {|h,v| h[v]=h[v].to_i+1; h}.reject{|k,v| v==1}.keys.sort
+    end
+    
+    def meads
+      @containers.collect{|container| container[:mead]}
     end
 
   end

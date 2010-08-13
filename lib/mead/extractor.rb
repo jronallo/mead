@@ -35,7 +35,7 @@ module Mead
       if mead.ead_location
         @ead_location = mead.ead_location
       else
-        raise 'Cannot extract because no EAD location defined in Mead::Identifier.'
+        raise 'Cannot extract because no Ead location defined in Mead::Identifier.'
       end
     end
 
@@ -90,32 +90,51 @@ module Mead
       dsc_dids = series.xpath('.//xmlns:did')
       box_type = @mead.container[:type]
       if box_type
-        box_xpath = %Q{xmlns:container[@type="#{box_type}"]}
-        box_xpath_capitalized = %Q{xmlns:container[@type="#{box_type.capitalize}"]}
+        box_xpath = %Q{xmlns:container[@type="#{box_type}"]}        
         folder_xpath = %Q{xmlns:container[@type='Folder' or @type='Envelope']}
-        matching_dids = dsc_dids.map do |did|
-          matches = []
-          if @mead.folder.nil?
-            matches << match_containers(did, box_xpath)
-            matches << match_containers(did, box_xpath_capitalized)
-          else
-            matches << match_containers(did, box_xpath, folder_xpath)
-            matches << match_containers(did, box_xpath_capitalized, folder_xpath)
-          end
-          matches
-        end
-        matching_dids = matching_dids.flatten.uniq.compact
+        matching_dids = get_matching_dids(dsc_dids, box_xpath, folder_xpath)
         #matching_dids
         if matching_dids.length > 1
           raise "too many matching nodes!"
         elsif matching_dids.length == 0
-          raise "no matching dids!"
+          # Second chance to handle legacy identifiers where a blank folder was given 001
+          if @mead.folder == '1'
+            @mead.folder = nil
+            find_node
+          else
+            raise "no matching dids!"
+          end
         else
           @node = matching_dids[0]
         end
       else
         return nil
       end
+    end
+    
+    def get_matching_dids(dsc_dids, box_xpath, folder_xpath)
+      box_type = @mead.container[:type]
+      box_xpath_capitalized = %Q{xmlns:container[@type="#{box_type.capitalize}"]}
+      dsc_dids.map do |did|
+        matches = []
+        if @mead.folder.nil?
+          matches << match_containers(did, box_xpath)
+          matches << match_containers(did, box_xpath_capitalized)
+        else
+          matches << match_containers(did, box_xpath, folder_xpath)
+          matches << match_containers(did, box_xpath_capitalized, folder_xpath)
+        end
+        matches
+      end.flatten.uniq.compact
+    end
+    
+    def folder_subs
+      if Mead::CONTAINER_MAPPING.keys.include?(@mead.folder[0,2])
+        folder_part = @mead.folder[2,10]
+      else
+        folder_part = @mead.folder
+      end
+      folder_part.gsub('_','.').gsub(',', '-').gsub(/^0*/,'')
     end
 
     def match_containers(did, box_xpath, folder_xpath=nil)
@@ -124,7 +143,7 @@ module Mead
           if !did.xpath(folder_xpath).empty?
             box_text = did.xpath(box_xpath).text
             folder_text = did.xpath(folder_xpath).text
-            if box_text == @mead.container[:number] and folder_text == @mead.folder
+            if box_text == @mead.container[:number] and folder_text == folder_subs
               return did
             end
           end

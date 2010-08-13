@@ -4,8 +4,8 @@ class TestMead < Test::Unit::TestCase
   context "Given an eadid mc00240" do
 
     setup do
-      opts = {:file => File.open('test/ead/mc00240.xml')}
-      @ead = Mead::EAD.new('mc00240', opts) 
+      opts = {:eadid => 'mc00240', :file => File.open('test/ead/mc00240.xml')}
+      @ead = Mead::Ead.new(opts) 
       @containers = @ead.containers
     end
 
@@ -53,15 +53,14 @@ class TestMead < Test::Unit::TestCase
         expected = 'mc00240-003-bx0069-000-001,"Personnel Ledger, Pt. 2, 1956",3'
         assert_equal expected, @csv_lines.last
       end
-    end
-    
+    end    
 
   end
 
   context "Given an eadid of ua023_031" do
     setup do
-      opts = {:file => File.open('test/ead/ua023_031.xml')}
-      @ead = Mead::EAD.new('ua023_031', opts)
+      opts = {:eadid => 'ua023_031',:file => File.open('test/ead/ua023_031.xml')}
+      @ead = Mead::Ead.new(opts)
       @containers = @ead.containers
     end
     should 'create information for a stub record for the first container' do
@@ -91,8 +90,8 @@ class TestMead < Test::Unit::TestCase
   
   context "Given an eadid of mc00310" do
     setup do
-      opts = {:url => 'http://www.lib.ncsu.edu/findingaids/mc00310.xml'}
-      @ead = Mead::EAD.new('mc00310', opts)
+      opts = {:eadid => 'mc00310', :url => 'http://www.lib.ncsu.edu/findingaids/mc00310.xml'}
+      @ead = Mead::Ead.new( opts)
       @containers = @ead.containers
     end  
     should 'determine it to be a valid ead for large scale digitization' do
@@ -100,10 +99,10 @@ class TestMead < Test::Unit::TestCase
     end
   end
 
-  context "Given a baseurl and no filehandle for an EAD" do
+  context "Given a baseurl and no filehandle for an Ead" do
     setup do
-      opts = {:baseurl => 'http://www.lib.ncsu.edu/findingaids'}
-      @ead = Mead::EAD.new('ua023_031', opts)
+      opts = {:eadid => 'ua023_031', :baseurl => 'http://www.lib.ncsu.edu/findingaids'}
+      @ead = Mead::Ead.new(opts)
     end
     should 'save the baseurl as an instance variable' do
       assert_equal 'http://www.lib.ncsu.edu/findingaids', @ead.baseurl
@@ -115,10 +114,10 @@ class TestMead < Test::Unit::TestCase
     end
   end
   
-  context "Given a url and no file or baseurl for an EAD" do
+  context "Given a url and no file or baseurl for an Ead" do
     setup do
-      opts = {:url => 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml'}
-      @ead = Mead::EAD.new('ua023_031', opts)
+      opts = {:eadid => 'ua023_031', :url => 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml'}
+      @ead = Mead::Ead.new(opts)
     end
     should 'save the url to an instance variable' do
       assert_equal 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml', @ead.url
@@ -129,11 +128,49 @@ class TestMead < Test::Unit::TestCase
       assert_equal expected, containers.first
     end
   end
+  
+  context "Given a baseurl and no eadid" do
+    should 'raise an exception' do
+      opts = {:baseurl => 'http://www.lib.ncsu.edu/findingaids'}
+      assert_raise RuntimeError do
+        Mead::Ead.new(opts)
+      end
+    end
+  end
 
 
-
-
-
+  context 'missing an eadid' do
+    setup do      
+      @expected = {:title=>"Sules V-B on Apple [3] - Grape Study - Set #17",
+        :series=>1,
+        :mead=>"ua023_031-001-cb0006-031-001"}    
+    end
+    context 'Given a file' do
+      setup do
+        opts = {:file => File.open('test/ead/ua023_031.xml')}
+        @ead = Mead::Ead.new(opts)
+      end
+      should 'try to find the eadid in the EAD XML' do
+        assert_equal 'ua023_031', @ead.eadid
+      end
+      should 'get information for the first container' do
+        assert_equal @expected, @ead.containers.first
+      end
+    end
+    
+    context 'Given a full URL' do
+      setup do
+        opts = {:url => 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml'}
+        @ead = Mead::Ead.new(opts)
+      end
+      should 'try to find the eadid in the EAD XML' do
+        assert_equal 'ua023_031', @ead.eadid
+      end
+      should 'get information for the first container' do
+        assert_equal @expected, @ead.containers.first
+      end
+    end
+  end
 
 
 end

@@ -23,13 +23,15 @@ module Mead
     end
     
     def output_label(directory)
-      png_path = output_barcode(directory)
       text_path = File.join(directory, @mead.mead + '-text.png')
       label_path = File.join(directory, @mead.mead + '-label.png')
-      `convert -font fixed -pointsize 14 -background white -fill black label:'#{label_text}' #{text_path}`
-      text_path
+      `convert -font fixed -pointsize 14 -background white -fill black label:"#{label_text}" #{text_path}`
       # convert *.png -resize 75% -append output.png
-      `convert #{png_path} #{text_path} -append #{label_path}`
+      png_path = output_barcode(directory)
+      begin
+        `convert #{png_path} #{text_path} -append #{label_path}`
+      rescue
+      end
       File.delete(png_path)
       File.delete(text_path)
       label_path

@@ -2,6 +2,23 @@ require 'helper'
 
 class TestMeadMC00240 < Test::Unit::TestCase
 
+  context "a legacy mead from mc00240" do
+    setup do
+      @mead_id = 'mc00240-001-ff0147-001-001_0001' #empty folder was given 001 rather than 000
+      @fh = File.open('test/ead/mc00240.xml')
+      @mead = Mead::Identifier.new(@mead_id, @fh)
+    end
+    should "retrieve the correct metadata" do
+      @mead.extract
+      expected = [{:unittitle=>"Moravian Chapel at Southside", :level=>"file",
+                    :item_location=>"flatfolder 147", :unitdate=>"1928", :unitid=>"1034"}, 
+                   {:unittitle=>"Drawings", :series_number=>1,
+                    :level=>"series", :unitdate=>"1917-1980", :unitid=>"MC 240 Series 1"}]
+      assert_equal expected, @mead.metadata
+    end
+  end
+  
+  
   context "a mead from mc00240" do
     setup do
       @mead_id = 'mc00240-001-ff0042-000-001'      

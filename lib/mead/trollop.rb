@@ -7,9 +7,9 @@ module Mead
         temp_memo
       end
       if number_of_get_methods > 1
-        Trollop::die 'Must specify ONLY one way to get the EAD XML' 
+        Trollop::die 'Must specify ONLY one way to get the Ead XML' 
       elsif number_of_get_methods == 0
-        Trollop::die 'Must specify at least one way to get the EAD XML' 
+        Trollop::die 'Must specify at least one way to get the Ead XML' 
       end
     end
     

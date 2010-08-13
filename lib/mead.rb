@@ -5,9 +5,13 @@ require 'open-uri'
 
 require 'rubygems'
 require 'nokogiri'
-require 'fastercsv'
+require 'csv'
+if CSV.const_defined? :Reader
+  require 'fastercsv'
+end
 
-require 'active_support'
+#require 'active_support'
+require 'active_support/core_ext/object/blank'
 
 module Mead
   CONTAINER_MAPPING = {
@@ -52,6 +56,7 @@ require 'mead/validations'
 require 'mead/identifier'
 require 'mead/extractor'
 require 'mead/ead'
+require 'mead/ead_validator'
 
 # if gbarcode and rmagick can both be loaded then load mead/barcode
 begin

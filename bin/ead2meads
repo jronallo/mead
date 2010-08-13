@@ -21,45 +21,60 @@ Default output is pretty printed Ruby. Multiple outputs can be specified.
 
 where options are:
 EOS
-  opt :eadid, 'Eadid of the EAD.', :required => true, :type => String
+  opt :eadid, 'Eadid of the EAD.', :type => String
   opt :url, 'Specify the whole URL for grabbing the EAD XML.', :type => String
   opt :file, 'File path to EAD XML.', :type => String
   opt :ruby, 'Output as pretty printed Ruby.'
   opt :json, 'Output as JSON'
   opt :csv, 'Output as CSV. Default.'
-  opt :valid, 'Only outputs the invalid containers.'
-  opt :verbose, 'Verbose output. Used to give invalid counts.'
+  opt :valid, 'Only outputs whether the EAD creates valid identifiers or not.'
+  opt :verbose, 'Outputs the list of invalid containers in cases where invalid.'
+  opt :meadsonly, 'Only output a list of mead identifiers.'
 end
 
 check_options(opts)
-
 location = get_location_options(opts)
 
-ead = Mead::EAD.new(opts[:eadid], location)
+options = {}
+options[:eadid] = opts[:eadid] if opts[:eadid]
+options.merge!(location)
+
+begin
+  ead = Mead::Ead.new(options)
+rescue => e
+  puts e
+  puts e.backtrace
+  exit
+end
 
 if opts[:valid]
   if ead.valid?
     puts 'Valid.'
   else
-    
-    puts Mead::EAD.to_csv(ead.invalid) if opts[:csv]
-    pp ead.invalid           if opts[:ruby]
-    puts ead.invalid.to_json if opts[:json]
-
-    if !opts[:csv] and !opts[:ruby] and !opts[:json]
-      puts Mead::EAD.to_csv(ead.invalid)
-    end
     if opts[:verbose]
-      puts 'Number of duplicate meads: ' + ead.dups.length.to_s
-      puts 'Effected Containers: ' + ead.invalid.length.to_s
+      puts Mead::Ead.to_csv(ead.invalid) if opts[:csv]
+      pp ead.invalid           if opts[:ruby]
+      puts ead.invalid.to_json if opts[:json]
+
+      if !opts[:csv] and !opts[:ruby] and !opts[:json]
+        puts Mead::Ead.to_csv(ead.invalid)
+      end
     end
+    puts 'Invalid!'
+    puts 'Number of duplicate meads: ' + ead.dups.length.to_s
+    puts 'Effected Containers: ' + ead.invalid.length.to_s
+    
   end
 else
-  puts ead.to_csv             if opts[:csv]
-  pp ead.containers           if opts[:ruby]
-  puts ead.containers.to_json if opts[:json]
+  if opts[:meadsonly]
+    puts ead.meads.join("\n")
+  else
+    puts ead.to_csv             if opts[:csv]
+    pp ead.containers           if opts[:ruby]
+    puts ead.containers.to_json if opts[:json]
 
-  if !opts[:csv] and !opts[:ruby] and !opts[:json]
-    puts ead.to_csv if opts[:csv]
-  end
+    if !opts[:csv] and !opts[:ruby] and !opts[:json]
+      puts ead.to_csv
+    end
+  end  
 end
