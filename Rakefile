@@ -13,9 +13,11 @@ begin
     gem.add_development_dependency "shoulda", ">= 0"
     gem.add_development_dependency "rmagick", ">= 0"
     gem.add_development_dependency 'gbarcode', ">= 0"
+    gem.add_development_dependency 'fakeweb', '>= 0'
     gem.add_dependency 'nokogiri', '>= 0'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.add_dependency 'trollop', '>= 0'
+    gem.add_dependency 'activesupport', '>= 2.3.8'
     #gem.add_dependency 'fastercsv', '>= 0'
   end
   Jeweler::GemcutterTasks.new
@@ -82,3 +84,4 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
