@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'pp'
+require 'rubygems'
+require 'mead'
+require 'pp'
+
+
+file = ARGV[0]
+
+filenames = File.read(file).split
+
+valid = []
+invalid = []
+filenames.each do |filename|
+  mead = Mead::Identifier.new(filename)
+  if mead.valid_format?
+    valid << filename
+  else
+    invalid << filename
+  end
+end
+
+puts "Total filenames   " + filenames.length.to_s
+puts "Unique filenames  " + filenames.uniq.length.to_s
+puts "Valid filenames   " + valid.length.to_s unless valid.empty?
+puts "Invalid filenames " + invalid.length.to_s unless invalid.empty?
