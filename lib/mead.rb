@@ -9,6 +9,7 @@ require 'csv'
 if CSV.const_defined? :Reader
   require 'fastercsv'
 end
+require 'json'
 
 #require 'active_support'
 require 'active_support/core_ext/object/blank'

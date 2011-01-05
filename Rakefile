@@ -15,6 +15,7 @@ begin
     gem.add_development_dependency 'gbarcode', ">= 0"
     gem.add_development_dependency 'fakeweb', '>= 0'
     gem.add_dependency 'nokogiri', '>= 0'
+    gem.add_dependency 'json', '>= 0'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.add_dependency 'trollop', '>= 0'
     gem.add_dependency 'activesupport', '= 2.3.5'
