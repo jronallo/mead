@@ -66,7 +66,8 @@ begin
     require 'RMagick'
     require 'tempfile'
     require 'mead/barcode'
-  rescue
-  end  
-rescue
+  rescue LoadError
+  end
+rescue LoadError
 end
+
