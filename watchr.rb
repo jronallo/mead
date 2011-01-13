@@ -3,10 +3,12 @@
 
 
 def notify(message)
+  return if message.nil?
   notify_send = `which notify-send`.chomp
   title = "Watchr Test Results"
   image = message.include?('0 failures, 0 errors') ? '~/.autotest_images/pass.png' : '~/.autotest_images/fail.png'
   msg = message.slice(/(\d+)\stests,\s(\d+)\sassertions,\s(\d+)\sfailures,\s(\d+)\serrors/)
+  system "notify_send 'message coming'"
   system %Q{#{notify_send} '#{title}' '#{msg}' -i #{image} -t 2000 &}
 end
 
@@ -20,7 +22,7 @@ def run_test_file(file)
   system('clear')
   puts file
   result = run(%Q(ruby -I"lib:test" -rubygems #{file}))
-  notify result.split("\n").last rescue nil
+  notify get_final_result(result)
   puts result
 end
 
@@ -28,12 +30,14 @@ def related_test_files(path)
   Dir['test/*.rb'].select { |file| file =~ /test_#{File.basename(path).split(".").first}.rb/ }
 end
 
-
+def get_final_result(result)
+  result.split("\n").select{|line| line.include?('failures, ')}.first  rescue nil
+end
 
 def run_all_tests
   system('clear')
   result = `rake test`
-  notify result.split("\n").last rescue nil
+  notify get_final_result(result)#result.split("\n").last rescue nil
   puts result
 end
 
@@ -48,6 +52,7 @@ end
 watch('test/helper\.rb') { run_all_tests }
 watch('test/test_.*\.rb') { run_all_tests }
 watch('lib/.*/.*\.rb') { run_all_tests }
+watch('test/ead/*.xml'){run_all_tests}
 
 Signal.trap('QUIT') { run_all_tests  } # Ctrl-\
 
