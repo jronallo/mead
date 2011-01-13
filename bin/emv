@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'pp'
+require 'json'
 
 # does an Mead::Ead validity check on a directory of EADs using the ead2meads tool
 dir = ARGV[0]
@@ -14,10 +15,12 @@ files.each_with_index do |path, i|
   begin
     eadid = File.basename(path, '.xml')
     cmd = File.join(File.dirname(__FILE__), 'ead2meads')
-    response = `#{cmd} --file #{path} --valid`.chomp
+    response = `#{cmd} --file #{path} --json --valid`.chomp
+    pp response
     if response == 'Valid.'
       puts i.to_s + ' ' + eadid + ': valid'
       valid << eadid
+    elsif response.empty?
     else
       puts i.to_s + ' ' + eadid + ': !'
       invalid << eadid
@@ -45,5 +48,29 @@ if answer.chomp == 'y'
     puts v.sub("Invalid!\n", '')
     puts
   end
+end
+
+puts 'Show setdata?'
+answer = STDIN.gets
+if answer.chomp == 'y'
+  data = [%Q|google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();","data.addColumn('string', 'eadid');|,
+        "data.addColumn('number', 'duplicates');",
+        "data.addColumn('number', 'invalid containers');"]
+  data << "data.addRows(#{invalid_responses.length});"
+  invalid_order = invalid_responses.keys.sort_by do |k|
+    invalid_response = JSON.parse(invalid_responses[k])
+    invalid_responses[k]["invalid"]
+  end
+  invalid_order.each_with_index do |key, i|
+    invalid_response = JSON.parse(invalid_responses[key])
+
+    data << "data.setValue(#{i}, 0, '#{key}');"
+    data << "data.setValue(#{i}, 1, #{invalid_response['dups']});"
+    data << "data.setValue(#{i}, 2, #{invalid_response['invalid']});"
+  end
+  puts data.join("\n")
 end
 

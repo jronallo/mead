@@ -3,6 +3,7 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'pp'
 require 'rubygems'
 require 'mead'
+require 'json'
 require 'mead/trollop'
 require 'trollop'
 include Mead::TrollopOptions
@@ -10,7 +11,7 @@ include Mead::TrollopOptions
 #eadid, baseurl
 opts = Trollop::options do
   banner <<-EOS
-This script takes an EAD XML document and returns mead identifiers and metadata 
+This script takes an EAD XML document and returns mead identifiers and metadata
 for it. It is possible to validate whether the parsed EAD XML provides unique
 identifiers for all component parts.
 
@@ -42,8 +43,8 @@ options.merge!(location)
 begin
   ead = Mead::Ead.new(options)
 rescue => e
-  puts e
-  puts e.backtrace
+  #puts e
+  #puts e.backtrace
   exit
 end
 
@@ -59,11 +60,18 @@ if opts[:valid]
       if !opts[:csv] and !opts[:ruby] and !opts[:json]
         puts Mead::Ead.to_csv(ead.invalid)
       end
+    else
+      if opts[:json]
+        json_output = {:dups => ead.dups.length, :invalid => ead.invalid.length, :total => ead.containers.length}.to_json
+        puts json_output
+      else
+        puts 'Invalid!'
+        puts 'Number of duplicate meads: ' + ead.dups.length.to_s
+        puts 'Effected Containers: ' + ead.invalid.length.to_s
+      end
     end
-    puts 'Invalid!'
-    puts 'Number of duplicate meads: ' + ead.dups.length.to_s
-    puts 'Effected Containers: ' + ead.invalid.length.to_s
-    
+
+
   end
 else
   if opts[:meadsonly]
@@ -76,5 +84,6 @@ else
     if !opts[:csv] and !opts[:ruby] and !opts[:json]
       puts ead.to_csv
     end
-  end  
+  end
 end
+
