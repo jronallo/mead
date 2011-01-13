@@ -10,10 +10,10 @@ module Mead
       @baseurl = opts[:baseurl] || nil
       @url     = opts[:url] || nil
       @containers = []
-      
+
       get_ead
       find_eadid unless @eadid
-      crawl_for_containers     
+      crawl_for_containers
     end
 
     def get_ead
@@ -28,7 +28,7 @@ module Mead
       elsif @baseurl
         @ead = open(File.join(@baseurl, @eadid + '.xml')).read
       end
-      @doc = Nokogiri::XML(@ead)  
+      @doc = Nokogiri::XML(@ead)
     end
 
     def find_eadid
@@ -39,7 +39,7 @@ module Mead
       end
     end
 
-    def crawl_for_containers      
+    def crawl_for_containers
       c01s = @doc.xpath('//xmlns:dsc/xmlns:c01')
       c01s.each_with_index do |c, i|
         dids = c.xpath('.//xmlns:container').map{|c| c.parent}.uniq
@@ -94,8 +94,9 @@ module Mead
     end
 
     def make_box(container, padding=4)
+      # FIXME: pad based on first part of range for folder +++
       padder = "%0" + padding.to_s + 's'
-      text = (padder % container.text).gsub(' ','0').gsub('.','_').gsub('-', ',')
+      text = (padder % container.text).gsub(' ','0').gsub('.','_').gsub('-', '~')
       container_type(container) + text
     end
 
@@ -113,7 +114,7 @@ module Mead
     def to_csv
       Mead::Ead.to_csv(self.containers)
     end
-    
+
     def self.to_csv(container_list)
       if CSV.const_defined? :Reader
         csv_class = FasterCSV # old CSV was loaded
@@ -127,28 +128,29 @@ module Mead
         end
       end
     end
-    
+
     def valid?
       meads = @containers.collect{|container| container[:mead]}.uniq
       if meads.length == @containers.length
         true
       else
         false
-      end        
+      end
     end
-    
+
     def invalid
       duplicates = dups
       @containers.select{|container| duplicates.include?(container[:mead])}
     end
-    
+
     def dups
       meads.inject({}) {|h,v| h[v]=h[v].to_i+1; h}.reject{|k,v| v==1}.keys.sort
     end
-    
+
     def meads
       @containers.collect{|container| container[:mead]}
     end
 
   end
 end
+

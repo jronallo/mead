@@ -90,16 +90,16 @@ module Mead
       dsc_dids = series.xpath('.//xmlns:did')
       box_type = @mead.container[:type]
       if box_type
-        box_xpath = %Q{xmlns:container[@type="#{box_type}"]}        
+        box_xpath = %Q{xmlns:container[@type="#{box_type}"]}
         folder_xpath = %Q{xmlns:container[@type='Folder' or @type='Envelope']}
         matching_dids = get_matching_dids(dsc_dids, box_xpath, folder_xpath)
         #matching_dids
         if matching_dids.length > 1
           raise "too many matching nodes!"
         elsif matching_dids.length == 0
-          # Second chance to handle legacy identifiers where a blank folder was given 001
+          # Second chance to handle legacy identifiers where a blank folder was given as 001
           if @mead.folder == '1'
-            @mead.folder = nil
+            @mead.folder = nil #TODO: check do 000 folders get automatically turned to nil when the mead is created?
             find_node
           else
             raise "no matching dids!"
@@ -111,7 +111,7 @@ module Mead
         return nil
       end
     end
-    
+
     def get_matching_dids(dsc_dids, box_xpath, folder_xpath)
       box_type = @mead.container[:type]
       box_xpath_capitalized = %Q{xmlns:container[@type="#{box_type.capitalize}"]}
@@ -127,14 +127,15 @@ module Mead
         matches
       end.flatten.uniq.compact
     end
-    
+
     def folder_subs
       if Mead::CONTAINER_MAPPING.keys.include?(@mead.folder[0,2])
         folder_part = @mead.folder[2,10]
       else
         folder_part = @mead.folder
       end
-      folder_part.gsub('_','.').gsub(',', '-').gsub(/^0*/,'')
+      # What are
+      folder_part.gsub('_','.').gsub('~', '-').gsub(/^0*/,'')
     end
 
     def match_containers(did, box_xpath, folder_xpath=nil)
@@ -200,8 +201,8 @@ module Mead
       index
     end
 
-    def get_dsc      
-      @dsc = @doc.xpath('//xmlns:dsc')      
+    def get_dsc
+      @dsc = @doc.xpath('//xmlns:dsc')
     end
 
     def get_eadxml
@@ -211,7 +212,7 @@ module Mead
           @ead_location.read
         else
           return open(@ead_location).read
-        end        
+        end
       rescue => e
         tries -= 1
         if tries > 0
@@ -224,3 +225,4 @@ module Mead
 
   end
 end
+
