@@ -11,9 +11,6 @@ if CSV.const_defined? :Reader
 end
 require 'json'
 
-#require 'active_support'
-require 'active_support/core_ext/object/blank'
-
 module Mead
   CONTAINER_MAPPING = {
     'am' => 'album',

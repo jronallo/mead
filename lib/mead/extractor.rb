@@ -159,7 +159,7 @@ module Mead
       xpath = 'xmlns:' + field
       if node.xpath(xpath)
         text = node.xpath(xpath).text
-        if text.blank?
+        if text.nil? or text.empty?
           return nil
         else
           return text
