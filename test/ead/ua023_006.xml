@@ -4,7 +4,7 @@
         <eadid url="http://www.lib.ncsu.edu/findingaids/ua023_006">ua023_006</eadid>
         <filedesc>
             <titlestmt>
-                <titleproper>Guide to the University Archives Photograph Collection, College of Agriculture and Life Sciences Photographs, 
+                <titleproper>Guide to the University Archives Photograph Collection, College of Agriculture and Life Sciences Photographs,
                     <date>circa 1900 - 1992</date>
                     <num>UA 023.006</num>
                 </titleproper>
@@ -84,60 +84,6 @@
         </userestrict>
         <controlaccess>
             <persname rules="aacr" source="naf">Jeter, F. H. (Frank Hamilton), 1891-1955</persname>
-            <corpname rules="aacr" source="naf">North Carolina State University--Departments--History.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University--History--20th century.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University--Students--History.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. College of Agriculture and Life Sciences--Faculty--History.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. College of Agriculture and Life Sciences--History.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. College of Agriculture and Life Sciences--Photographs.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. College of Agriculture and Life Sciences.</corpname>
-            <corpname rules="aacr" source="local">North Carolina State University. Dept. of Agronomy--History.</corpname>
-            <corpname rules="aacr" source="local">North Carolina State University. Dept. of Animal Science.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Botany--History.</corpname>
-            <corpname rules="aacr" source="local">North Carolina State University. Dept. of Communication Services.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Crop Science.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Entomology.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Food Science.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Horticultural Science.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. Dept. of Plant Pathology.</corpname>
-            <corpname rules="aacr" source="local">North Carolina State University. Dept. of Zoology.</corpname>
-            <corpname rules="aacr" source="naf">North Carolina State University. Soil Science Dept.</corpname>
-            <corpname rules="aacr" source="naf">Southeastern Plant Environment Laboratory.</corpname>
-            <subject source="lcsh">Agriculture--North Carolina--History--20th century</subject>
-            <subject source="lcsh">Agriculture--North Carolina--Photographs</subject>
-            <subject source="lcsh">Agriculture--Research--North Carolina</subject>
-            <subject source="lcsh">Agriculture--Study and teaching (Higher)--North Carolina</subject>
-            <subject source="lcsh">Botany--Research--North Carolina</subject>
-            <subject source="lcsh">Botany--Study and teaching--North Carolina</subject>
-            <subject source="lcsh">Cattle--Study and teaching--North Carolina</subject>
-            <subject source="lcsh">Chickens</subject>
-            <subject source="lcsh">Corn</subject>
-            <subject source="lcsh">Cotton</subject>
-            <subject source="lcsh">Crop science--Research--North Carolina--History</subject>
-            <subject source="lcsh">Crops</subject>
-            <subject source="lcsh">Dairy farms</subject>
-            <subject source="lcsh">Dairying</subject>
-            <subject source="lcsh">Entomology--Research--North Carolina</subject>
-            <subject source="lcsh">Entomology--Study and teaching--North Carolina</subject>
-            <subject source="lcsh">Farmers--North Carolina</subject>
-            <subject source="lcsh">Forestry schools and education--North Carolina</subject>
-            <subject source="lcsh">Forests and forestry--Research--North Carolina</subject>
-            <subject source="lcsh">Grain</subject>
-            <subject source="lcsh">Horticulture--Research--North Carolina</subject>
-            <subject source="lcsh">Horticulture--Study and teaching (Higher)--North Carolina</subject>
-            <subject source="lcsh">Livestock</subject>
-            <subject source="lcsh">Livestock--Study and teaching--North Carolina</subject>
-            <genreform source="lctgm">Photographs</genreform>
-            <subject source="lcsh">Poultry</subject>
-            <subject source="lcsh">Poultry--Study and teaching (Higher)--North Carolina</subject>
-            <subject source="lcsh">Soil science--Research--North Carolina</subject>
-            <subject source="lcsh">Swine--Study and teaching--North Carolina</subject>
-            <subject source="lcsh">Tobacco farmers</subject>
-            <subject source="lcsh">Tobacco industry--North Carolina--History</subject>
-            <subject source="lcsh">Tobacco workers--North Carolina</subject>
-            <subject source="lcsh">Tobacco--North Carolina</subject>
-            <subject source="lcsh">Tobacco--Research--North Carolina</subject>
-            <subject source="lcsh">Zoology--Study and teaching--North Carolina</subject>
         </controlaccess>
         <dsc>
             <c01 id="ref2" level="series">
@@ -153,41 +99,7 @@
                         <container type="Folder">1</container>
                     </did>
                 </c02>
-                <c02 id="ref4" level="file">
-                    <did>
-                        <unittitle>SALS Revue, Spring 1982</unittitle>
-                        <container type="Box">1</container>
-                        <container type="Folder">2</container>
-                    </did>
-                </c02>
-                <c02 id="ref5" level="file">
-                    <did>
-                        <unittitle>General</unittitle>
-                        <container type="Box">1</container>
-                        <container type="Folder">3</container>
-                    </did>
-                </c02>
-                <c02 id="ref6" level="file">
-                    <did>
-                        <unittitle>General</unittitle>
-                        <container type="Box">1</container>
-                        <container type="Folder">4</container>
-                    </did>
-                </c02>
-                <c02 id="ref7" level="file">
-                    <did>
-                        <unittitle>General</unittitle>
-                        <container type="Box">1</container>
-                        <container type="Folder">5</container>
-                    </did>
-                </c02>
-                <c02 id="ref8" level="file">
-                    <did>
-                        <unittitle>General</unittitle>
-                        <container type="Box">1</container>
-                        <container type="Folder">6</container>
-                    </did>
-                </c02>
+
             </c01>
             <c01 id="ref9" level="series">
                 <did>
