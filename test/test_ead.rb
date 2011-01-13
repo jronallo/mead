@@ -90,8 +90,7 @@ class TestMead < Test::Unit::TestCase
 
   context "Given an eadid of mc00310" do
     setup do
-      FakeWeb.register_uri(:get, 'http://www.lib.ncsu.edu/findingaids/mc00310.xml',
-      :response => File.join('test', 'fixtures', 'mc00310.xml'))
+
       opts = {:eadid => 'mc00310', :url => 'http://www.lib.ncsu.edu/findingaids/mc00310.xml'}
       @ead = Mead::Ead.new( opts)
       @containers = @ead.containers
@@ -103,8 +102,6 @@ class TestMead < Test::Unit::TestCase
 
   context "Given a baseurl and no filehandle for an Ead" do
     setup do
-      FakeWeb.register_uri(:get, 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml',
-            :response => File.join('test', 'fixtures', 'ua023_031.xml'))
       opts = {:eadid => 'ua023_031', :baseurl => 'http://www.lib.ncsu.edu/findingaids'}
       @ead = Mead::Ead.new(opts)
     end
@@ -120,8 +117,6 @@ class TestMead < Test::Unit::TestCase
 
   context "Given a url and no file or baseurl for an Ead" do
     setup do
-      FakeWeb.register_uri(:get, 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml',
-            :response => File.join('test', 'fixtures', 'ua023_031.xml'))
       opts = {:eadid => 'ua023_031', :url => 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml'}
       @ead = Mead::Ead.new(opts)
     end
@@ -147,8 +142,6 @@ class TestMead < Test::Unit::TestCase
 
   context 'missing an eadid' do
     setup do
-      FakeWeb.register_uri(:get, 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml',
-      :response => File.join('test', 'fixtures', 'ua023_031.xml'))
       @expected = {:title=>"Sules V-B on Apple [3] - Grape Study - Set #17",
         :series=>1,
         :mead=>"ua023_031-001-cb0006-031-001"}

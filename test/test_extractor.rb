@@ -3,8 +3,7 @@ require 'helper'
 class TestMeadExtractor < Test::Unit::TestCase
   context "the mead ua023_031-008-cb0013-001-001" do
     setup do
-      FakeWeb.register_uri(:get, 'http://www.lib.ncsu.edu/findingaids/ua023_031.xml',
-              :response => File.join('test', 'fixtures', 'ua023_031.xml'))
+
       @identifier = 'ua023_031-008-cb0013-001-001'
       @expected_1 = [{:level=>"file", :unitdate=>nil, :unitid=>nil, :unittitle=>
             "Horticulture - students in greenhouse - for photograph see - Agriculture school - Horticulture - Hand Colored Slides, agriculture school",
