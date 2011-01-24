@@ -1,30 +1,30 @@
 require 'rubygems'
+require 'bundler'
+begin
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  $stderr.puts e.message
+  $stderr.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
 require 'rake'
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "mead"
-    gem.summary = %Q{Extract identifiers and metadata from EAD XML.}
-    gem.description = %Q{Extract identifiers and metadata from EAD XML.}
-    gem.email = "jronallo@gmail.com"
-    gem.homepage = "http://github.com/jronallo/mead"
-    gem.authors = ["Jason Ronallo"]
-    gem.add_development_dependency "shoulda", ">= 0"
-    gem.add_development_dependency "rmagick", ">= 0"
-    gem.add_development_dependency 'gbarcode', ">= 0"
-    gem.add_development_dependency 'fakeweb', '>= 0'
-    gem.add_dependency 'nokogiri', '>= 0'
-    gem.add_dependency 'json', '>= 0'
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-    gem.add_dependency 'trollop', '>= 0'
-    #gem.add_dependency 'activesupport', '= 2.3.5'
-    #gem.add_dependency 'fastercsv', '>= 0'
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
+  gem.name = "mead"
+  gem.homepage = "http://github.com/jronallo/mead"
+  gem.license = "MIT"
+  gem.summary = %Q{Extract identifiers and metadata from EAD XML.}
+  gem.description = %Q{Extract identifiers and metadata from EAD XML.}
+  gem.email = "jronallo@gmail.com"
+  gem.authors = ["Jason Ronallo"]
+  # Include your dependencies below. Runtime dependencies are required when using your gem,
+  # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
+  #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
+  #  gem.add_development_dependency 'rspec', '> 1.2.3'
 end
+Jeweler::RubygemsDotOrgTasks.new
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
@@ -33,45 +33,24 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-begin
-  require 'rcov/rcovtask'
-  Rcov::RcovTask.new do |test|
-    test.libs << 'test'
-    test.pattern = 'test/**/test_*.rb'
-    test.verbose = true
-    test.rcov_opts << '--exclude ".gems/*"'
-  end
-rescue LoadError
-  task :rcov do
-    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
-  end
+require 'rcov/rcovtask'
+Rcov::RcovTask.new do |test|
+  test.libs << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
 end
 
-task :test => :check_dependencies
-
-begin
-  require 'reek/adapters/rake_task'
-  Reek::RakeTask.new do |t|
-    t.fail_on_error = true
-    t.verbose = false
-    t.source_files = 'lib/**/*.rb'
-  end
-rescue LoadError
-  task :reek do
-    abort "Reek is not available. In order to run reek, you must: sudo gem install reek"
-  end
+require 'reek/rake/task'
+Reek::Rake::Task.new do |t|
+  t.fail_on_error = true
+  t.verbose = false
+  t.source_files = 'lib/**/*.rb'
 end
 
-begin
-  require 'roodi'
-  require 'roodi_task'
-  RoodiTask.new do |t|
-    t.verbose = false
-  end
-rescue LoadError
-  task :roodi do
-    abort "Roodi is not available. In order to run roodi, you must: sudo gem install roodi"
-  end
+require 'roodi'
+require 'roodi_task'
+RoodiTask.new do |t|
+  t.verbose = false
 end
 
 task :default => :test

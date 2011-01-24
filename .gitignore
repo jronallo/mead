@@ -13,9 +13,24 @@ tmtags
 ## VIM
 *.swp
 
-## PROJECT::GENERAL
+# rcov generated
 coverage
+
+# rdoc generated
 rdoc
+
+# yard generated
+doc
+.yardoc
+
+# bundler
+.bundle
+
+# jeweler generated
 pkg
 
+# mine
+.rvmrc
+
 ## PROJECT::SPECIFIC
+
