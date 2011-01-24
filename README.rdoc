@@ -7,12 +7,7 @@ metadata from EAD XML based on such container identifiers.
 
 == Installation
 
-For Ruby 1.9 install the version of gbarcode from the branch here: http://github.com/ahaller/gbarcode
-- git clone https://github.com/ahaller/gbarcode.git
-- git fetch origin ruby1.9
-- git checkout remotes/origin/ruby1.9
-- rake repackage
-- gem install pkg/gbarcode-0.98.gem
+
 
 == TODO
 
