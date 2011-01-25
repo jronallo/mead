@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 require 'pp'
+require 'rubygems'
 require 'json'
 
 # does an Mead::Ead validity check on a directory of EADs using the ead2meads tool
-dir = ARGV[0]
+dir = ARGV[0] || (puts 'Give the path to a directory of EADs to validate!'; exit)
 
 valid = []
 invalid = []
