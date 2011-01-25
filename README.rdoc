@@ -2,16 +2,72 @@
 
 Metadata from Encoded Archival Description.
 
-Example code for creating identifiers for containers in EAD XML and for extracting
-metadata from EAD XML based on such container identifiers.
+The core of this code is an identifier which expresses the location of an object
+in a physical collection. This identifier can be used as a filename for 
+digitized objects during scanning. Later descriptive metadata from EAD XML can
+be extracted. This descriptive metadata can then be applied to stub records for 
+each digital object, which can quickly make digitized objects as discoverable as
+the archival description makes the physical collections.
+
+== Functionality
+
+- Parse EAD XML and output all identifiers (with other metadata) for all the 
+component parts. This export can be CSV or JSON.
+- Resolve a filename-identifier to a location in the physical collection and
+extract related metadata up through the hierarchy
+- Create barcodes based on an identifiers.
+- Validate whether an identifier is well-formed and valid by resolving to a 
+component part in the EAD XML.
+- Commandline tools for each of these functions.
 
 == Installation
 
+- clone from github and build the gem from source at this time
+
+== Identifier specification in brief
+
+These identifiers encode information about where original objects in the physical
+collection are located. To make this work for as wide a range of encoded EAD XML
+and archival arrangement and processing practice as we could, it includes many
+pieces of information to help insure uniqueness within a collection.
+
+Indentifiers are made up of 6 possible segments. Segments are separated by a
+single dash - to aid in readability. Take the sample identifier
+mc00240-001-ff0001-000-001_0001
+
+1. mc00240: Collection number. The first section identifies the collection and 
+is usually the eadid of the collection. mc00240 refers to 
+http://www.lib.ncsu.edu/findingaids/mc00240
+
+2. 001: Series number. This is the number of the series of which the physical 
+item is a part. It is a three digit, left zero padded number.
+
+3. ff0001: Container code & number. The third segment is made up of a two letter
+code for different container types. The list of current codes can be seen in
+lib/mead.rb as Mead::CONTAINER_MAPPING. (These are the codes NCSU uses for 
+encoding containers in EAD XML.) The second part is a three digit, left zero
+padded number. This example would be flatfolder 1.
+
+4. 000: Folder number. In this case there is no second container, so the folder
+number is 000. If there was a container with the "folder" value for the type 
+attribute and text content of "3", then this segment would be 003. In the case
+where the value is other than "folder" the container code is used in front. So
+a "mapcase" container could be "mc003" when the map case is the third map case
+in the parent container.
+
+5. 001: Item number. This is the number of the item in the container. It is an
+arbitrary incremented number. Multiple pages of multipage document would 
+be considered as one item and so would get the same item number.
+
+6. _0001: Sequence number (optional). If there is a multipage document then this
+section can be used. This is the sequence or page number. It is preceded with 
+an underscore.
 
 
 == TODO
 
-- Make validations work for other institutions eadid formats.
+- Test for use by other institutions. I'm happy to help make this code work for
+the needs of other institutions.
 - Get more examples for more tests.
 - Better exceptions.
 
