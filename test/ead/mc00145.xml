@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ead xsi:schemaLocation="urn:isbn:1-931666-22-9 http://www.loc.gov/ead/ead.xsd" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns="urn:isbn:1-931666-22-9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <eadheader findaidstatus="Completed" repositoryencoding="iso15511" countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b">
+        <eadid url="http://www.lib.ncsu.edu/findingaids/mc00145/">mc00145</eadid>
+        <filedesc>
+            <titlestmt>
+                <titleproper>Preliminary Inventory to the Gil Wheless Papers
+                    <num>MC 00145</num>
+                </titleproper>
+                <author>Finding aid prepared by Todd Kosmerick</author>
+            </titlestmt>
+            <publicationstmt>
+                <publisher>Special Collections Research Center</publisher>
+                <date>2009-2010</date>
+            </publicationstmt>
+        </filedesc>
+        <profiledesc>
+            <creation>This finding aid was produced using the Archivists' Toolkit
+                <date>2011-01-21T15:31-0500</date>
+            </creation>
+            <langusage>English</langusage>
+            <descrules>Describing Archives: A Content Standard</descrules>
+        </profiledesc>
+    </eadheader>
+    <archdesc level="collection">
+        <did>
+            <unittitle>Gil Wheless Drawings</unittitle>
+            <unitid>MC 00145</unitid>
+            <repository>
+                <corpname>Special Collections Research Center</corpname>
+            </repository>
+            <langmaterial>
+                <language langcode="eng"/>
+            </langmaterial>
+            <physdesc>
+                <extent>69.0 Linear feet</extent>
+                <extent>3 cartons, 60 tubes, 7 flat folders</extent>
+            </physdesc>
+            <unitdate normal="1965/2005" type="inclusive">circa 1965 - circa 2005</unitdate>
+            <abstract id="ref13" label="Abstract">This collection contains materials from the career of landscape architect Gil Wheless: drawings of plans, photographs, CDs of CAD drawings, sketches, prinouts of CAD drawings, newsclippins, brochures, pamphlets, and other records.</abstract>
+            <abstract id="ref14" label="Abstract">Gil Wheless grew up in Durham, North Carolina. During the 1960s he attended North Carolina State University's School of Design, eventually entering the landscape architecture program. He studied under Richard Moore and Lewis Clarke. He worked with A.E. Bye in Connecticut and later became a principal partner in Environmental Design Associates.</abstract>
+            <origination label="creator">
+                <persname rules="aacr" source="local">Wheless, Gil</persname>
+            </origination>
+        </did>
+        <scopecontent id="ref1">
+            <head>Scope and Content Note</head>
+            <p>This collection contains materials from the career of landscape architect Gil Wheless: drawings of plans, photographs, CDs of CAD drawings, sketches, prinouts of CAD drawings, newsclippings, brochures, pamphlets, and other records.</p>
+        </scopecontent>
+        <bioghist id="ref7">
+            <head>Biographical Note</head>
+            <p>Gil Wheless grew up in Durham, North Carolina. During the 1960s he attended North Carolina State University's School of Design, eventually entering the landscape architecture program. He studied under Richard Moore and Lewis Clarke.</p>
+            <p>Wheless first worked with A.E. Bye in Connecticut. Later he became a principal partner in Environmental Design Associates, a landscape architecture firm established in 1968 and reorganized as a professional corporation in 1970. The firm is located in Wilton, Connecticut.</p>
+            <p></p>
+        </bioghist>
+        <arrangement id="ref8">
+            <head>Organization of the Collection</head>
+            <p>The materials are arranged in the order received. This collection has not yet received full archival processing.</p>
+        </arrangement>
+        <accessrestrict id="ref9">
+            <head>Restrictions to Access</head>
+            <p>Collection is open for research; access requires at least 24 hours advance notice.</p>
+        </accessrestrict>
+        <userestrict id="ref10">
+            <head>Copyright Notice</head>
+            <p>The nature of the NCSU Libraries' Special Collections means that copyright or other information about restrictions may be difficult or even impossible to determine despite reasonable efforts. The NCSU Libraries claims only physical ownership of most Special Collections materials.</p>
+            <p>The materials from our collections are made available for use in research, teaching, and private study, pursuant to U.S. Copyright law. The user must assume full responsibility for any use of the materials, including but not limited to, infringement of copyright and publication rights of reproduced materials. Any materials used for academic research or otherwise should be fully credited with the source.</p>
+        </userestrict>
+        <prefercite id="ref12">
+            <head>Preferred Citation</head>
+            <p>[Identification of item], Gil Wheless Papers, MC 00145, Special Collections Research Center, North Carolina State University Libraries, Raleigh, NC</p>
+        </prefercite>
+        <acqinfo id="ref11">
+            <head>Acquisition Information</head>
+            <p>Gift of Gil Wheless, 2009 (Accession 2009-0132) and 2010 (Accession 2010-0007).</p>
+        </acqinfo>
+        <controlaccess>
+            <persname rules="aacr" source="local">Wheless, Gil</persname>
+            <subject source="lcsh">Landscape architecture</subject>
+            <subject source="lcsh">Landscape architecture--United States--History</subject>
+        </controlaccess>
+        <dsc>
+            <c01 id="ref2" level="file">
+                <did>
+                    <unittitle>Photographs, CDs of CAD drawings, sketches, prinouts of CAD drawings, newsclippings, brochures, pamphlets, and other records.</unittitle>
+                    <container id="cid27000001" type="Carton" label="Mixed materials">1</container>
+                </did>
+            </c01>
+            <c01 id="ref3" level="file">
+                <did>
+                    <unittitle>Photographs, CDs of CAD drawings, sketches, prinouts of CAD drawings, newsclippings, brochures, pamphlets, and other records.</unittitle>
+                    <container id="cid27000002" type="Carton" label="Mixed materials">2</container>
+                </did>
+            </c01>
+            <c01 id="ref4" level="file">
+                <did>
+                    <unittitle>Photographs, CDs of CAD drawings, sketches, prinouts of CAD drawings, newsclippings, brochures, pamphlets, and other records.</unittitle>
+                    <container id="cid27000003" type="Carton" label="Mixed materials">3</container>
+                </did>
+            </c01>
+            <c01 id="ref15" level="file">
+                <did>
+                    <unittitle>Photographic printouts</unittitle>
+                    <container id="cid27167001" type="flatbox" label="Mixed materials">4</container>
+                </did>
+            </c01>
+            <c01 id="ref5" level="file">
+                <did>
+                    <unittitle>Drawings of landscape architecture plans</unittitle>
+                    <container id="cid27000010" type="tube" label="Mixed materials">54</container>
+                    <container id="cid27000011" type="tube" label="Mixed materials">53</container>
+                    <container id="cid27000008" type="tube" label="Mixed materials">56</container>
+                    <container id="cid27000009" type="tube" label="Mixed materials">55</container>
+                    <container id="cid27000014" type="tube" label="Mixed materials">50</container>
+                    <container id="cid27000012" type="tube" label="Mixed materials">52</container>
+                    <container id="cid27000013" type="tube" label="Mixed materials">51</container>
+                    <container id="cid27000006" type="tube" label="Mixed materials">58</container>
+                    <container id="cid27000007" type="tube" label="Mixed materials">57</container>
+                    <container id="cid27000004" type="tube" label="Mixed materials">60</container>
+                    <container id="cid27000005" type="tube" label="Mixed materials">59</container>
+                </did>
+            </c01>
+            <c01 id="ref6" level="file">
+                <did>
+                    <unittitle>Drawings of landscape architecture plans and photographic printouts</unittitle>
+                    <container id="cid27000019" type="flatfolder" label="Mixed materials">3</container>
+                    <container id="cid27000018" type="flatfolder" label="Mixed materials">4</container>
+                    <container id="cid27000017" type="flatfolder" label="Mixed materials">5</container>
+                    <container id="cid27000016" type="flatfolder" label="Mixed materials">6</container>
+                    <container id="cid27000021" type="flatfolder" label="Mixed materials">1</container>
+                    <container id="cid27000020" type="flatfolder" label="Mixed materials">2</container>
+                </did>
+            </c01>
+            <c01 id="ref16" level="file">
+                <did>
+                    <unittitle>Chesebrough Ponds - Trumbull</unittitle>
+                    <container id="cid27509002" type="tube" label="Mixed materials">1</container>
+                </did>
+            </c01>
+            
+            <c01 id="ref22" level="file">
+                <did>
+                    <unittitle>David Berman, Stamford, Conn.</unittitle>
+                    <container id="cid27509007" type="tube" label="Mixed materials">1</container>
+                    <unitdate normal="1973/1973">1973</unitdate>
+                </did>
+            </c01>
+            <c01 id="ref23" level="file">
+                <did>
+                    <unittitle>Donald F. Liebert, Nanuet, N.Y.</unittitle>
+                    <container id="cid27509008" type="tube" label="Mixed materials">1</container>
+                    <unitdate normal="1969/1969">1969</unitdate>
+                </did>
+            </c01>
+        </dsc>
+    </archdesc>
+</ead>

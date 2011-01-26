@@ -1,7 +1,8 @@
 module Mead
   class Ead
     # factor out :baseurl, :file and :url into an options object?
-    attr_accessor :containers, :ead, :baseurl, :file, :url, :doc, :eadid
+    attr_accessor :containers, :ead, :baseurl, :file, :url, :doc, :eadid, :series_present,
+      :c01s_series_answer
 
     # options include :file and :base_url
     def initialize(opts={})
@@ -40,26 +41,58 @@ module Mead
     end
 
     def crawl_for_containers
-      c01s = @doc.xpath('//xmlns:dsc/xmlns:c01')
       c01s.each_with_index do |c, i|
         dids = c.xpath('.//xmlns:container').map{|c| c.parent}.uniq
         #c.xpath('xmlns:c02/xmlns:did').map do |did|
         dids.map do |did|
           info = {}
-          info[:series] = i + 1
+          if c01s_series?
+            info[:series] = i + 1 # if all the c01s are at the file level this fails
+          else
+            info[:series] = 0
+          end
           info[:mead] = create_mead(did, i)
           info[:title] = concat_title(did)
+          # FIXME
+          info[:containers] = text_containers(did)
           @containers << info
         end
       end
     end
+    
+    def text_containers(did)
+      did.xpath('xmlns:container').map do |container|
+        text = ''
+        text << container.attribute('type').text + ' ' if container.attribute('type')
+        text << container.text if container.text
+        text
+      end
+    end
+    
+    def c01s
+      @doc.xpath('//xmlns:dsc/xmlns:c01')
+    end
+    
+    def c01s_series?
+      @c01s_series_answer ||= c01s.length == series_c01s.length
+    end
+    
+    def series_c01s
+      @doc.xpath("//xmlns:dsc/xmlns:c01[@level='series']")
+    end
 
     def create_mead(did, i)
       mead = [@eadid.dup]
-      mead << "%03d" % (i + 1) #series
-#      mead << 'c1'  #container 1
-#      mead <<  'c2' #container 2
-      mead << specific_containers(did)
+      if c01s_series?
+        mead << "%03d" % (i + 1) #series
+      else
+        mead << '001'
+      end
+      begin
+        mead << specific_containers(did)
+      rescue
+        return @mead = mead.flatten.join('-')        
+      end
       mead << '001' # stub for first record
       @mead = mead.flatten.join('-')
     end
@@ -86,7 +119,7 @@ module Mead
         container_values << make_box(did.xpath('xmlns:container')[0])
         container_values << make_box(did.xpath('xmlns:container')[1],3)
       elsif containers.length > 2
-        raise "I don't know what to do with more than 2 containers in a did!"
+        raise "I can't create a mead identifier with more than 2 containers in a did!"
       else
         raise "Do we really have zero containers?!"
       end
@@ -122,19 +155,45 @@ module Mead
         csv_class = CSV # use CSV from 1.9
       end
       csv_string = csv_class.generate do |csv|
-        csv << ['mead','title','series']
+        # FIXME
+        csv << ['mead','title','series', 'containers']
+        #csv << ['mead','title','series']
         container_list.each do |container|
-          csv << [container[:mead], container[:title], container[:series]]
+          csv << [container[:mead], container[:title], container[:series], container[:containers].join(', ')]
+          #csv << [container[:mead], container[:title], container[:series]]
         end
       end
     end
 
     def valid?
-      meads = @containers.collect{|container| container[:mead]}.uniq
-      if meads.length == @containers.length
-        true
+      if unique_meads.length == @containers.length
+        if short_meads?
+          false
+        else
+          true
+        end
       else
         false
+      end
+    end
+    
+    def unique_meads
+      @containers.collect{|container| container[:mead]}.uniq
+    end
+    
+    def long_meads
+      unique_meads.select{|m| m.split('-').length > 2}
+    end
+    
+    def short_meads
+      unique_meads.select{|m| m.split('-').length <= 2}
+    end
+    
+    def short_meads?
+      if unique_meads.length == long_meads.length
+        false
+      else
+        true
       end
     end
 

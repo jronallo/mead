@@ -5,7 +5,7 @@
 def notify(message)
   return if message.nil?
   notify_send = `which notify-send`.chomp
-  title = "Watchr Test Results"
+  title = "MEAD Watchr Test Results"
   image = message.include?('0 failures, 0 errors') ? '~/.autotest_images/pass.png' : '~/.autotest_images/fail.png'
   msg = message.slice(/(\d+)\stests,\s(\d+)\sassertions,\s(\d+)\sfailures,\s(\d+)\serrors/)
   system %Q{#{notify_send} '#{title}' '#{msg}' -i #{image} -t 2000 &}

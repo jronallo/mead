@@ -12,7 +12,8 @@ class TestMead < Test::Unit::TestCase
     should "create information for a stub record for the first container" do
       expected = {:mead => 'mc00240-001-ff0181-000-001',
         :title => 'Adams, J. H. - Barn, 1929 (1075)',
-        :series => 1
+        :series => 1,
+        :containers => ['flatfolder 181']
       }
       assert_equal expected, @containers[0]
     end
@@ -20,7 +21,8 @@ class TestMead < Test::Unit::TestCase
     should "create information for a stub record for the last container" do
       expected = {:mead => 'mc00240-003-bx0069-000-001',
         :title => 'Personnel Ledger, Pt. 2, 1956',
-        :series => 3
+        :series => 3,
+        :containers=>["Box 69"]
       }
       assert_equal expected, @containers.last
     end
@@ -31,7 +33,8 @@ class TestMead < Test::Unit::TestCase
     should "provide information on the containers with invalid (duplicate) mead identifiers" do
       assert_equal 47, @ead.invalid.length
       assert_equal 20, @ead.dups.length
-      expected = {:series=>1, :title=>"Breach, William- Residence", :mead=>"mc00240-001-ff0298-000-001"}
+      expected = {:series=>1, :title=>"Breach, William- Residence", 
+        :mead=>"mc00240-001-ff0298-000-001", :containers=>["flatfolder 298"]}
       assert_equal expected, @ead.invalid.first
     end
 
@@ -41,16 +44,16 @@ class TestMead < Test::Unit::TestCase
         @csv_lines = @csv.split("\n")
       end
       should "be able to create a csv file from the parsed ead" do
-        assert_equal 'mead,title,series', @csv_lines[0]
+        assert_equal 'mead,title,series,containers', @csv_lines[0]
       end
 
       should "be able to create good csv data from the parsed ead for the first container" do
-        expected = 'mc00240-001-ff0181-000-001,"Adams, J. H. - Barn, 1929 (1075)",1'
+        expected = 'mc00240-001-ff0181-000-001,"Adams, J. H. - Barn, 1929 (1075)",1,flatfolder 181'
         assert_equal expected, @csv_lines[1]
       end
 
       should "be able to create good csv data from the parsed ead for the last container" do
-        expected = 'mc00240-003-bx0069-000-001,"Personnel Ledger, Pt. 2, 1956",3'
+        expected = 'mc00240-003-bx0069-000-001,"Personnel Ledger, Pt. 2, 1956",3,Box 69'
         assert_equal expected, @csv_lines.last
       end
     end
@@ -66,12 +69,16 @@ class TestMead < Test::Unit::TestCase
     should 'create information for a stub record for the first container' do
       expected = {:title=>"Sules V-B on Apple [3] - Grape Study - Set #17",
         :series=>1,
-        :mead=>"ua023_031-001-cb0006-031-001"}
+        :mead=>"ua023_031-001-cb0006-031-001",
+        :containers => ["cardbox 6", "Envelope 31"]
+        }
       assert_equal expected, @containers[0]
     end
 
     should 'create information for a stub record for the second container' do
-      expected = {:mead=>"ua023_031-001-cb0010-010-001",
+      expected = {
+        :containers=>["cardbox 10", "Envelope 10"],
+        :mead=>"ua023_031-001-cb0010-010-001",
         :title=>
           "(no. 13) Eastern Carolina, North Carolina - Diec - cabbage and treated - Hand Colored Slides, Numbered Series",
         :series=>1}
@@ -81,7 +88,8 @@ class TestMead < Test::Unit::TestCase
     should 'create information for a stub record for the last container' do
       expected = {:mead => 'ua023_031-010-cb0019-006-001',
         :title => 'Examples of original storage envelopes',
-        :series => 10
+        :series => 10,
+        :containers=>["cardbox 19", "Envelope 6"]
       }
       assert_equal expected, @containers.last
     end
@@ -110,7 +118,10 @@ class TestMead < Test::Unit::TestCase
     end
     should 'create information for a stub record for the last container' do
       containers = @ead.containers
-      expected = {:title=>"Sules V-B on Apple [3] - Grape Study - Set #17", :series=>1, :mead=>"ua023_031-001-cb0006-031-001"}
+      expected = {:title=>"Sules V-B on Apple [3] - Grape Study - Set #17", :series=>1, 
+        :mead=>"ua023_031-001-cb0006-031-001",
+          :containers => ["cardbox 6", "Envelope 31"]
+        }
       assert_equal expected, containers.first
     end
   end
@@ -125,7 +136,9 @@ class TestMead < Test::Unit::TestCase
     end
     should 'create information for a stub record for the last container' do
       containers = @ead.containers
-      expected = {:title=>"Sules V-B on Apple [3] - Grape Study - Set #17", :series=>1, :mead=>"ua023_031-001-cb0006-031-001"}
+      expected = {:title=>"Sules V-B on Apple [3] - Grape Study - Set #17", 
+      :series=>1, :mead=>"ua023_031-001-cb0006-031-001",
+          :containers => ["cardbox 6", "Envelope 31"]}
       assert_equal expected, containers.first
     end
   end
@@ -144,7 +157,9 @@ class TestMead < Test::Unit::TestCase
     setup do
       @expected = {:title=>"Sules V-B on Apple [3] - Grape Study - Set #17",
         :series=>1,
-        :mead=>"ua023_031-001-cb0006-031-001"}
+        :mead=>"ua023_031-001-cb0006-031-001",
+        :containers=>["cardbox 6", "Envelope 31"]
+        }
     end
     context 'Given a file' do
       setup do

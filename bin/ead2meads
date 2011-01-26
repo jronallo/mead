@@ -43,8 +43,8 @@ options.merge!(location)
 begin
   ead = Mead::Ead.new(options)
 rescue => e
-  #puts e
-  #puts e.backtrace
+  puts e
+  puts e.backtrace
   exit
 end
 
@@ -68,6 +68,7 @@ if opts[:valid]
         puts 'Invalid!'
         puts 'Number of duplicate meads: ' + ead.dups.length.to_s
         puts 'Effected Containers: ' + ead.invalid.length.to_s
+        puts 'Short meads:' + ead.short_meads.length.to_s
       end
     end
 
