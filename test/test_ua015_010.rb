@@ -60,6 +60,14 @@ class TestMeadUA015_010 < Test::Unit::TestCase
         should "extract the item's unitdate" do
           assert_equal '1949-1950', @extractor.stack[0][:unitdate]
         end
+        
+        should "extract the item level" do
+          assert_equal 'file', @extractor.stack[0][:level]
+        end
+        
+        should "extract the item unitid" do
+          assert_nil @extractor.stack[0][:unitid]
+        end
 
         should "extract the parent unittitle" do
           assert_equal "Men's Basketball", @extractor.stack[1][:unittitle]
@@ -68,17 +76,29 @@ class TestMeadUA015_010 < Test::Unit::TestCase
         should "extract the parent unitdate" do
           assert_equal "1911-2006", @extractor.stack[1][:unitdate]
         end
-
-        should "only extract up to the series level" do
-          assert_equal [
-            {:unittitle=>"Programs", :unitdate=>"1949-1950",
-            :level => 'file', :unitid => nil, :item_location => 'Box 39, Folder 5'},
-            {:unittitle=>"Men's Basketball", :unitdate=>"1911-2006",
-              :level => 'series', :unitid => 'Series 4',
-              :series_number => 4
-            }
-          ], @extractor.stack
+        
+        should "extract the parent level" do
+          assert_equal 'series', @extractor.stack[1][:level]
         end
+        
+        should "extract the parent unitid" do
+          assert_equal 'Series 4', @extractor.stack[1][:unitid]
+        end
+        
+        should "extract a series' series number" do
+          assert_equal 4, @extractor.stack[1][:series_number]
+        end
+
+#        should "only extract up to the series level" do
+#          assert_equal [
+#            {:unittitle=>"Programs", :unitdate=>"1949-1950",
+#            :level => 'file', :unitid => nil, :item_location => 'Box 39, Folder 5'},
+#            {:unittitle=>"Men's Basketball", :unitdate=>"1911-2006",
+#              :level => 'series', :unitid => 'Series 4',
+#              :series_number => 4
+#            }
+#          ], @extractor.stack
+#        end
 
       end
 

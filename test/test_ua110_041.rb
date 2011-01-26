@@ -60,6 +60,14 @@ class TestMeadUA110_041 < Test::Unit::TestCase
         should "extract the item's unitdate" do
           assert_nil @extractor.stack[0][:unitdate]
         end
+        
+        should "extract the item unitid" do
+          assert_nil @extractor.stack[0][:unitid]
+        end
+        
+        should "extract the item level" do
+          assert_equal 'file', @extractor.stack[0][:level]
+        end
 
         should "extract the parent unittitle" do
           assert_equal "UA 110.041 Series 1: Projects", @extractor.stack[1][:unittitle]
@@ -68,18 +76,30 @@ class TestMeadUA110_041 < Test::Unit::TestCase
         should "extract the parent unitdate" do
           assert_equal "1951-1976", @extractor.stack[1][:unitdate]
         end
-
-        should "only extract up to the series level" do
-          assert_equal [
-            {:unittitle=>"North Carolina, Wake County, Raleigh: Dix Hill [Dorothea Dix Hospital] Drawings",
-              :unitdate=>nil, :level => 'file', :unitid => nil,
-            :item_location => 'Folder 1.1'},
-            {:unittitle=>"UA 110.041 Series 1: Projects", :unitdate=>"1951-1976",
-              :level => 'series', :unitid => nil,
-              :series_number => 1
-            }
-          ], @extractor.stack
+        
+        should "extract the parent unitid" do
+          assert_nil @extractor.stack[1][:unitid]
         end
+        
+        should "extract the parent level" do
+          assert_equal 'series', @extractor.stack[1][:level]
+        end
+        
+        should "extract a series' series number" do
+          assert_equal 1, @extractor.stack[1][:series_number]
+        end
+
+#        should "only extract up to the series level" do
+#          assert_equal [
+#            {:unittitle=>"North Carolina, Wake County, Raleigh: Dix Hill [Dorothea Dix Hospital] Drawings",
+#              :unitdate=>nil, :level => 'file', :unitid => nil,
+#            :item_location => 'Folder 1.1'},
+#            {:unittitle=>"UA 110.041 Series 1: Projects", :unitdate=>"1951-1976",
+#              :level => 'series', :unitid => nil,
+#              :series_number => 1
+#            }
+#          ], @extractor.stack
+#        end
 
       end
 

@@ -55,6 +55,7 @@ require 'mead/identifier'
 require 'mead/extractor'
 require 'mead/ead'
 require 'mead/ead_validator'
+require 'mead/container'
 
 # if gbarcode and rmagick can both be loaded then load mead/barcode
 begin

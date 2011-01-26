@@ -5,9 +5,17 @@ class TestMeadExtractor < Test::Unit::TestCase
     setup do
 
       @identifier = 'ua023_031-008-cb0013-001-001'
-      @expected_1 = [{:level=>"file", :unitdate=>nil, :unitid=>nil, :unittitle=>
+      @expected_1 = [
+        {:level=>"file", 
+        :unitdate=>nil, 
+        :unitid=>nil, 
+        :unittitle=>
             "Horticulture - students in greenhouse - for photograph see - Agriculture school - Horticulture - Hand Colored Slides, agriculture school",
-        :item_location => 'cardbox 13, Envelope 1'},
+        :item_location => 'cardbox 13, Envelope 1',
+        :containers => [
+          Mead::Container.new(:type => 'cardbox', :label => "Mixed materials", :text => '13'), 
+          Mead::Container.new(:type => 'Envelope', :text => '1')]
+        },
         {:level=>"subseries", :unitdate=>nil, :unitid=>nil, :unittitle=>"Students"},
         {:level=>"series", :unitdate=>nil, :series_number=>8, :unitid=>"Series 8", :unittitle=>"People"}]
     end
@@ -32,7 +40,9 @@ class TestMeadExtractor < Test::Unit::TestCase
                     :item_location=>"flatfolder 52",
                     :unitdate=>"1927",
                     :level=>"file",
-                    :unitid=>"903"},
+                    :unitid=>"903",
+                    :containers => 
+                    [Mead::Container.new(:type => 'flatfolder', :label => 'Mixed materials', :text => '52')]},
                    {:series_number=>1,
                     :unittitle=>"Drawings",
                     :unitdate=>"1917-1980",

@@ -55,6 +55,9 @@ module Mead
       }
       did_location_text = did_location(node)
       additional_did[:item_location] = did_location_text if did_location_text
+      
+      add_containers(additional_did, node)
+      
       if additional_did[:level] == 'series'
         additional_did[:series_number] = series_number(node)
       end
@@ -64,6 +67,19 @@ module Mead
       @stack << additional_did
       if !node.parent.parent.xpath('xmlns:did').empty?
         push_to_stack(node.parent.parent.xpath('xmlns:did')[0])
+      end
+    end
+
+    def add_containers(hash, node)
+      if !node.xpath('./xmlns:container').empty?
+        hash[:containers] = []
+        node.xpath('./xmlns:container').each do |container|
+          c = Mead::Container.new
+          c.type = container.attribute('type').text if container.attribute('type')
+          c.label = container.attribute('label').text if container.attribute('label')
+          c.text = container.text if !container.text.empty?
+          hash[:containers] << c
+        end
       end
     end
 

@@ -8,7 +8,6 @@ def notify(message)
   title = "Watchr Test Results"
   image = message.include?('0 failures, 0 errors') ? '~/.autotest_images/pass.png' : '~/.autotest_images/fail.png'
   msg = message.slice(/(\d+)\stests,\s(\d+)\sassertions,\s(\d+)\sfailures,\s(\d+)\serrors/)
-  system "notify_send 'message coming'"
   system %Q{#{notify_send} '#{title}' '#{msg}' -i #{image} -t 2000 &}
 end
 

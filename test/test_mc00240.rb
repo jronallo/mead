@@ -11,7 +11,12 @@ class TestMeadMC00240 < Test::Unit::TestCase
     should "retrieve the correct metadata" do
       @mead.extract
       expected = [{:unittitle=>"Moravian Chapel at Southside", :level=>"file",
-                    :item_location=>"flatfolder 147", :unitdate=>"1928", :unitid=>"1034"}, 
+                    :item_location=>"flatfolder 147", :unitdate=>"1928", :unitid=>"1034",
+                      :containers => 
+                      [Mead::Container.new(:type => 'flatfolder', 
+                                            :label => "Mixed materials",
+                                            :text => '147')]
+                    }, 
                    {:unittitle=>"Drawings", :series_number=>1,
                     :level=>"series", :unitdate=>"1917-1980", :unitid=>"MC 240 Series 1"}]
       assert_equal expected, @mead.metadata
@@ -81,6 +86,18 @@ class TestMeadMC00240 < Test::Unit::TestCase
         should "extract the item's unitdate" do
           assert_equal '1953', @extractor.stack[0][:unitdate]
         end
+        
+        should "extract the item's level" do
+          assert_equal 'file', @extractor.stack[0][:level]
+        end
+        
+        should "extract the item's unitid" do
+          assert_equal '1421', @extractor.stack[0][:unitid]
+        end
+        
+        should "extract the item's containers" do          
+          assert_equal @extractor.stack[0][:containers].first.class, Mead::Container
+        end
 
         should "extract the parent unittitle" do
           assert_equal "Drawings", @extractor.stack[1][:unittitle]
@@ -89,16 +106,28 @@ class TestMeadMC00240 < Test::Unit::TestCase
         should "extract the parent unitdate" do
           assert_equal "1917-1980", @extractor.stack[1][:unitdate]
         end
-
-        should "only extract up to the series level" do
-          assert_equal [
-            {:unittitle=>"Amos Hosiery Mill - Addition", :unitdate=>"1953",
-            :level => 'file', :unitid => '1421', :item_location => 'flatfolder 42'},
-            {:unittitle=>"Drawings", :unitdate=>"1917-1980", :level => 'series',
-              :unitid => 'MC 240 Series 1', :series_number => 1
-            }
-          ], @extractor.stack
+        
+        should "extract the parent level" do
+          assert_equal "series", @extractor.stack[1][:level]
         end
+        
+        should "extract the parent unitid" do
+          assert_equal 'MC 240 Series 1', @extractor.stack[1][:unitid]
+        end
+        
+        should "extract a series' series number" do
+          assert_equal 1, @extractor.stack[1][:series_number]
+        end
+
+#        should "only extract up to the series level" do
+#          assert_equal [
+#            {:unittitle=>"Amos Hosiery Mill - Addition", :unitdate=>"1953",
+#            :level => 'file', :unitid => '1421', :item_location => 'flatfolder 42'},
+#            {:unittitle=>"Drawings", :unitdate=>"1917-1980", :level => 'series',
+#              :unitid => 'MC 240 Series 1', :series_number => 1
+#            }
+#          ], @extractor.stack
+#        end
 
       end
 
