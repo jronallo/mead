@@ -36,32 +36,32 @@ single dash - to aid in readability. Take the sample identifier
 mc00240-001-ff0001-000-001_0001
 
 1. mc00240: Collection number. The first section identifies the collection and 
-is usually the eadid of the collection. mc00240 refers to 
-http://www.lib.ncsu.edu/findingaids/mc00240
+    is usually the eadid of the collection. mc00240 refers to 
+    http://www.lib.ncsu.edu/findingaids/mc00240
 
 2. 001: Series number. This is the number of the series of which the physical 
-item is a part. It is a three digit, left zero padded number.
+    item is a part. It is a three digit, left zero padded number.
 
 3. ff0001: Container code & number. The third segment is made up of a two letter
-code for different container types. The list of current codes can be seen in
-lib/mead.rb as Mead::CONTAINER_MAPPING. (These are the codes NCSU uses for 
-encoding containers in EAD XML.) The second part is a three digit, left zero
-padded number. This example would be flatfolder 1.
+    code for different container types. The list of current codes can be seen in
+    lib/mead.rb as Mead::CONTAINER_MAPPING. (These are the codes NCSU uses for 
+    encoding containers in EAD XML.) The second part is a three digit, left zero
+    padded number. This example would be flatfolder 1.
 
 4. 000: Folder number. In this case there is no second container, so the folder
-number is 000. If there was a container with the "folder" value for the type 
-attribute and text content of "3", then this segment would be 003. In the case
-where the value is other than "folder" the container code is used in front. So
-a "mapcase" container could be "mc003" when the map case is the third map case
-in the parent container.
+    number is 000. If there was a container with the "folder" value for the type 
+    attribute and text content of "3", then this segment would be 003. In the case
+    where the value is other than "folder" the container code is used in front. So
+    a "mapcase" container could be "mc003" when the map case is the third map case
+    in the parent container.
 
 5. 001: Item number. This is the number of the item in the container. It is an
-arbitrary incremented number. Multiple pages of multipage document would 
-be considered as one item and so would get the same item number.
+    arbitrary incremented number. Multiple pages of multipage document would 
+    be considered as one item and so would get the same item number.
 
 6. _0001: Sequence number (optional). If there is a multipage document then this
-section can be used. This is the sequence or page number. It is preceded with 
-an underscore.
+    section can be used. This is the sequence or page number. It is preceded with 
+    an underscore.
 
 
 == TODO
