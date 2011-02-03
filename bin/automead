@@ -33,6 +33,7 @@ if opts[:ver]
   exit
 end
 
+Trollop::die 'You must include a mead identifier.' if !opts[:mead] and !opts[:ver]
 check_options(opts)
 location = get_location(opts)
 
