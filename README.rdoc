@@ -26,9 +26,11 @@ the archival description makes the physical collections.
   
 == Commandline use
 
-automead --help
+  automead --help
 
-automead --mead mc00240-001-ff0052-000-001 --baseurl http://www.lib.ncsu.edu/findingaids --ruby
+  automead --mead mc00240-001-ff0052-000-001 --baseurl http://www.lib.ncsu.edu/findingaids --ruby
+
+  ead2meads --url http://www.lib.ncsu.edu/findingaids/mc00240.xml
 
 == Identifier specification in brief
 
