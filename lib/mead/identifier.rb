@@ -30,24 +30,27 @@ module Mead
 
     def split_container
       type = CONTAINER_MAPPING[ @container[0,2] ]
-      number = strip_zeros(@container[2,10].gsub('_','.'))
+      number = strip_zeros(container_number_transforms(@container[2,10]))
       @container = {:type=> type, :number=> number}
     end
     
     def split_folder
       if CONTAINER_MAPPING.keys.include?(@folder[0,2])
         type = CONTAINER_MAPPING[ @folder[0,2] ] 
-        number = strip_zeros(@folder[2,10].gsub('_','.').gsub('~', '-').gsub(/^0*/,''))
+        number = strip_zeros(container_number_transforms(@folder[2,10]))
       else
         type = 'folder'
-        number = strip_zeros(@folder.gsub('_','.').gsub('~', '-').gsub(/^0*/,''))
+        number = strip_zeros(container_number_transforms(@folder))
       end
       if number.nil? or (number and number.empty?)
         @folder = nil
       else
         @folder = {:type=> type, :number=> number}
-      end
-      
+      end      
+    end
+    
+    def container_number_transforms(string)
+      string.gsub('_','.').gsub('~', '-').gsub(/^0*/,'')
     end
 
     def clean_zeros(*args)
