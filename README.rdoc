@@ -22,7 +22,7 @@ component part in the EAD XML.
 
 == Installation
 
-- clone from github and build the gem from source at this time
+  gem install mead
 
 == Identifier specification in brief
 
@@ -72,6 +72,7 @@ mc00240-001-ff0001-000-001_0001
 
 == TODO
 
+- Refactor, refactor, refactor.
 - Test for use by other institutions. I'm happy to help make this code work for
 the needs of other institutions.
 - Get more examples for more tests.
