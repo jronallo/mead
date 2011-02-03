@@ -24,6 +24,9 @@ the archival description makes the physical collections.
 
   gem install mead
   
+To enable barcode generation you'll need to install rmagick and the version of
+gbarcode specified in the Gemfile.
+  
 == Commandline use
 
   automead --help
