@@ -26,7 +26,7 @@ class TestMeadUA110_041 < Test::Unit::TestCase
       end
 
       should "produce the expected folder" do
-        assert_equal @result.folder, nil
+        assert_nil @result.folder
       end
 
       should "produce the expected sequence" do

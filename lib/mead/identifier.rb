@@ -15,9 +15,9 @@ module Mead
       parse_mead 'eadid', 'series', 'container', 'folder', 'sequence'
       @ead_location = parse_ead_location(ead_location)
       split_container
+      split_folder
       split_page
-      clean_zeros 'series', 'folder', 'sequence', 'page'      
-      @folder = nil if @folder.empty?
+      clean_zeros 'series', 'sequence', 'page'      
       self
     end
 
@@ -32,6 +32,22 @@ module Mead
       type = CONTAINER_MAPPING[ @container[0,2] ]
       number = strip_zeros(@container[2,10].gsub('_','.'))
       @container = {:type=> type, :number=> number}
+    end
+    
+    def split_folder
+      if CONTAINER_MAPPING.keys.include?(@folder[0,2])
+        type = CONTAINER_MAPPING[ @folder[0,2] ] 
+        number = strip_zeros(@folder[2,10].gsub('_','.').gsub('~', '-').gsub(/^0*/,''))
+      else
+        type = 'folder'
+        number = strip_zeros(@folder.gsub('_','.').gsub('~', '-').gsub(/^0*/,''))
+      end
+      if number.nil? or (number and number.empty?)
+        @folder = nil
+      else
+        @folder = {:type=> type, :number=> number}
+      end
+      
     end
 
     def clean_zeros(*args)
@@ -72,6 +88,15 @@ module Mead
       @metadata = Mead::Extractor.new(self).extract
       self
     end
+    
+#    def ead_has_series?
+#      if series > 1
+#        true
+#      else
+#        if 
+#        false
+#      end
+#    end
 
 #    def replace_underscores(*args)
 #      args.each do |field|

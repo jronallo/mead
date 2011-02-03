@@ -23,4 +23,5 @@ group :development do
   gem "reek", "~> 1.2.8"
   gem "roodi", "~> 2.1.0"
   gem "fakeweb", ">= 0"
+  gem "ruby-debug"
 end

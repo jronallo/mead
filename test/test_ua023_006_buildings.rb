@@ -26,7 +26,7 @@ class TestMeadUA023_006B < Test::Unit::TestCase
       end
 
       should "produce the expected folder" do
-        assert_equal @result.folder, '8'
+        assert_equal @result.folder, {:type => 'folder', :number => '8'}
       end
 
       should "produce the expected sequence" do

@@ -10,7 +10,8 @@ class TestEadValidator < Test::Unit::TestCase
       assert_equal 'test/ead/', @eadv.directory
     end
     should 'return results' do
-      expected = {:valid=>["ua023_006"], :invalid=>["mc00145","mc00240", "ua015_010", "ua023_031", "ua110_041"]}
+      expected = {:valid=>["ua021_428", "ua023_006"], 
+      :invalid=>["mc00145","mc00240", "ua015_010", "ua023_031", "ua110_041"]}
       assert_equal expected, @eadv.validate!
     end
   end

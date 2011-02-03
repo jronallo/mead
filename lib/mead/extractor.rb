@@ -94,80 +94,50 @@ module Mead
     end
 
     def get_series
-      c01s = @dsc.xpath('.//xmlns:c01')
-      c01s.each_with_index do |c01, i|
-        if mead.series.to_i == i + 1
-          @series = c01
+      c01_series = @dsc.xpath(".//xmlns:c01[@level='series']")
+      if c01_series and !c01_series.empty?
+        c01_series.each_with_index do |c01, i|
+          if mead.series.to_i == i + 1
+            @series = c01
+          end
         end
+      else
+        @series = @dsc
       end
     end
+    
+    def folder_types
+      types = "@type='#{@mead.folder[:type]}' or @type='#{@mead.folder[:type].capitalize}'"
+      if @mead.folder[:type] == 'folder'
+        types << " or @type='envelope' or @type='Envelope'"
+      end
+      types
+    end
 
-    def find_node
-      dsc_dids = series.xpath('.//xmlns:did')
-      box_type = @mead.container[:type]
-      if box_type
-        box_xpath = %Q{xmlns:container[@type="#{box_type}"]}
-        folder_xpath = %Q{xmlns:container[@type='Folder' or @type='Envelope']}
-        matching_dids = get_matching_dids(dsc_dids, box_xpath, folder_xpath)
+    def find_node(folder=true)
+      #dsc_dids = series.xpath('.//xmlns:did')
+      if @mead.container[:type]    
+        container_set_xpath = ".//xmlns:container[text()='#{@mead.container[:number]}' and (@type='#{@mead.container[:type]}' or @type='#{@mead.container[:type].capitalize}')]"
+        if folder and @mead.folder
+          container_set_xpath << "/../xmlns:container[text()='#{@mead.folder[:number]}' and (#{folder_types})]"
+        end
+        containers = series.xpath(container_set_xpath)
         #matching_dids
-        if matching_dids.length > 1
+        if containers.length > 1
           raise "too many matching nodes!"
-        elsif matching_dids.length == 0
+        elsif containers.length == 0
           # Second chance to handle legacy identifiers where a blank folder was given as 001
-          if @mead.folder == '1'
-            @mead.folder = nil #TODO: check do 000 folders get automatically turned to nil when the mead is created?
-            find_node
+          if @mead.folder[:number] == '1'
+            #@mead.folder = nil #TODO: check do 000 folders get automatically turned to nil when the mead is created?
+            find_node(false)
           else
             raise "no matching dids!"
           end
         else
-          @node = matching_dids[0]
+          @node = containers[0].parent
         end
       else
         return nil
-      end
-    end
-
-    def get_matching_dids(dsc_dids, box_xpath, folder_xpath)
-      box_type = @mead.container[:type]
-      box_xpath_capitalized = %Q{xmlns:container[@type="#{box_type.capitalize}"]}
-      dsc_dids.map do |did|
-        matches = []
-        if @mead.folder.nil?
-          matches << match_containers(did, box_xpath)
-          matches << match_containers(did, box_xpath_capitalized)
-        else
-          matches << match_containers(did, box_xpath, folder_xpath)
-          matches << match_containers(did, box_xpath_capitalized, folder_xpath)
-        end
-        matches
-      end.flatten.uniq.compact
-    end
-
-    def folder_subs
-      if Mead::CONTAINER_MAPPING.keys.include?(@mead.folder[0,2])
-        folder_part = @mead.folder[2,10]
-      else
-        folder_part = @mead.folder
-      end
-      # What are
-      folder_part.gsub('_','.').gsub('~', '-').gsub(/^0*/,'')
-    end
-
-    def match_containers(did, box_xpath, folder_xpath=nil)
-      if did.xpath(box_xpath)
-        if !folder_xpath.nil?
-          if !did.xpath(folder_xpath).empty?
-            box_text = did.xpath(box_xpath).text
-            folder_text = did.xpath(folder_xpath).text
-            if box_text == @mead.container[:number] and folder_text == folder_subs
-              return did
-            end
-          end
-        else
-          box_text = did.xpath(box_xpath).text
-          return did if box_text == @mead.container[:number]
-        end
       end
     end
 
@@ -184,22 +154,6 @@ module Mead
         nil
       end
     end
-
-    #    def container_date(node)
-    #      if node.xpath('xmlns:unitdate')
-    #        node.xpath('xmlns:unitdate').text
-    #      else
-    #        nil
-    #      end
-    #    end
-    #
-    #    def container_id(node)
-    #      if node.xpath('xmlns:unitid')
-    #        node.xpath('xmlns:unitid').text
-    #      else
-    #        nil
-    #      end
-    #    end
 
     def container_level(node)
       if node.parent['level']
