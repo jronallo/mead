@@ -11,18 +11,17 @@ the archival description makes the physical collections.
 
 == Functionality
 
-- Parse EAD XML and output all identifiers (with other metadata) for all the 
-component parts. This export can be CSV or JSON.
-- Resolve a filename-identifier to a location in the physical collection and
-extract related metadata up through the hierarchy
+- Parse EAD XML and output all identifiers (with other metadata) for all the component parts. This export can be CSV or JSON.
+- Resolve a filename-identifier to a location in the physical collection and extract related metadata up through the hierarchy
 - Create barcodes based on an identifiers.
-- Validate whether an identifier is well-formed and valid by resolving to a 
-component part in the EAD XML.
+- Validate whether an identifier is well-formed and valid by resolving to a component part in the EAD XML.
 - Commandline tools for each of these functions.
 
 == Installation
 
   gem install mead
+  
+== 
 
 == Identifier specification in brief
 
@@ -31,7 +30,7 @@ collection are located. To make this work for as wide a range of encoded EAD XML
 and archival arrangement and processing practice as we could, it includes many
 pieces of information to help insure uniqueness within a collection.
 
-Indentifiers are made up of 6 possible segments. Segments are separated by a
+Identifiers are made up of 6 possible segments. Segments are separated by a
 single dash - to aid in readability. Take the sample identifier
 mc00240-001-ff0001-000-001_0001
 
@@ -74,7 +73,7 @@ mc00240-001-ff0001-000-001_0001
 
 - Refactor, refactor, refactor.
 - Test for use by other institutions. I'm happy to help make this code work for
-the needs of other institutions.
+  the needs of other institutions.
 - Get more examples for more tests.
 - Better exceptions.
 
