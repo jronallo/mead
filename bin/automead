@@ -19,12 +19,18 @@ Default output is pretty printed Ruby. Multiple outputs can be specified.
 
 where options are:
 EOS
-  opt :mead, "A mead-style identifier", :required => true, :type => String
+  opt :mead, "A mead-style identifier", :type => String
   opt :baseurl, 'Specify just the base URL for grabbing the EAD XML if it is of the format baseurl/eadid.xml.', :type => String
   opt :url, 'Specify the whole URL for grabbing the EAD XML.', :type => String
   opt :file, 'File path to EAD XML.', :type => String
   opt :ruby, 'Output as pretty printed Ruby. Default.'
   opt :json, 'Output as JSON'
+  opt :ver, 'Output just the version number of the gem.'
+end
+
+if opts[:ver]  
+  puts File.read(File.join(File.dirname(__FILE__), '..', 'VERSION'))
+  exit
 end
 
 check_options(opts)

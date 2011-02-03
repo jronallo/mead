@@ -1,6 +1,7 @@
 module Mead
   module TrollopOptions
     def check_options(opts)
+      Trollop::die 'You must include a mead identifier.' if !opts[:mead] and !opts[:version]
       number_of_get_methods = [:baseurl, :url, :file].inject(0) do |memo, option| 
         temp_memo = memo
         temp_memo += 1 if opts[option]
