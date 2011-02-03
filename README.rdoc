@@ -11,17 +11,24 @@ the archival description makes the physical collections.
 
 == Functionality
 
-- Parse EAD XML and output all identifiers (with other metadata) for all the component parts. This export can be CSV or JSON.
-- Resolve a filename-identifier to a location in the physical collection and extract related metadata up through the hierarchy
+- Parse EAD XML and output all identifiers (with other metadata) for all the 
+  component parts. This export can be CSV or JSON.
+- Resolve a filename-identifier to a location in the physical collection and 
+  extract related metadata up through the hierarchy
 - Create barcodes based on an identifiers.
-- Validate whether an identifier is well-formed and valid by resolving to a component part in the EAD XML.
+- Validate whether an identifier is well-formed and valid by resolving to a 
+  component part in the EAD XML.
 - Commandline tools for each of these functions.
 
 == Installation
 
   gem install mead
   
-== 
+== Commandline use
+
+automead --help
+
+automead --mead mc00240-001-ff0052-000-001 --baseurl http://www.lib.ncsu.edu/findingaids --ruby
 
 == Identifier specification in brief
 
