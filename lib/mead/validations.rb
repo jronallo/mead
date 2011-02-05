@@ -82,7 +82,7 @@ module Mead
           if result.nil? or result.empty?
             add_error(instance, :mead, 'No matching container.')
           # even if the instance.series is 1 there may not be any series in the EAD XML yet
-          elsif result.last[:series_number] and instance.series != result.last[:series_number].to_s
+        elsif result.last[:series_sequence] and instance.series != result.last[:series_sequence].to_s
             add_error(instance, :mead, 'Bad series.') 
           end
           rescue => e

@@ -10,15 +10,15 @@ class TestMeadMC00240 < Test::Unit::TestCase
     end
     should "retrieve the correct metadata" do
       @mead.extract
-      expected = [{:unittitle=>"Moravian Chapel at Southside", :level=>"file",
+      expected = [Mead::ComponentPart.new({:unittitle=>"Moravian Chapel at Southside", :level=>"file",
                     :item_location=>"flatfolder 147", :unitdate=>"1928", :unitid=>"1034",
                       :containers => 
                       [Mead::Container.new(:type => 'flatfolder', 
                                             :label => "Mixed materials",
                                             :text => '147')]
-                    }, 
-                   {:unittitle=>"Drawings", :series_number=>1,
-                    :level=>"series", :unitdate=>"1917-1980", :unitid=>"MC 240 Series 1"}]
+                    }), 
+                   Mead::ComponentPart.new({:unittitle=>"Drawings", :series_sequence=>1,
+                    :level=>"series", :unitdate=>"1917-1980", :unitid=>"MC 240 Series 1"})]
       assert_equal expected, @mead.metadata
     end
   end
@@ -116,18 +116,10 @@ class TestMeadMC00240 < Test::Unit::TestCase
         end
         
         should "extract a series' series number" do
-          assert_equal 1, @extractor.stack[1][:series_number]
+          assert_equal 1, @extractor.stack[1][:series_sequence]
         end
 
-#        should "only extract up to the series level" do
-#          assert_equal [
-#            {:unittitle=>"Amos Hosiery Mill - Addition", :unitdate=>"1953",
-#            :level => 'file', :unitid => '1421', :item_location => 'flatfolder 42'},
-#            {:unittitle=>"Drawings", :unitdate=>"1917-1980", :level => 'series',
-#              :unitid => 'MC 240 Series 1', :series_number => 1
-#            }
-#          ], @extractor.stack
-#        end
+
 
       end
 
