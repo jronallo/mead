@@ -1,7 +1,10 @@
 module Mead
   class Identifier
 
-    attr_accessor :mead, :eadid, :series, :container, :folder, :sequence, :page, 
+    attr_accessor :mead, :eadid, :series, 
+      # container is just the first container and folder the second container
+      :container, :folder, 
+      :sequence, :page, 
       :ead_location, :metadata
     include Mead::Validations
     validates_format_of_mead
@@ -92,21 +95,5 @@ module Mead
       self
     end
     
-#    def ead_has_series?
-#      if series > 1
-#        true
-#      else
-#        if 
-#        false
-#      end
-#    end
-
-#    def replace_underscores(*args)
-#      args.each do |field|
-#        value = instance_variable_get('@' + field).gsub('_', '.')
-#        instance_variable_set('@' + field, value)
-#      end
-#    end
-
   end
 end
