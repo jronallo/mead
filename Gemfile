@@ -4,7 +4,7 @@ source "http://rubygems.org"
 #   gem "activesupport", ">= 2.3.5"
 
 
-gem "nokogiri", "= 1.4.3.1"
+gem "nokogiri"
 gem "json", ">= 0"
 gem "trollop", ">= 0"
 
