@@ -4,7 +4,7 @@ source "http://rubygems.org"
 #   gem "activesupport", ">= 2.3.5"
 
 
-gem "nokogiri", "= 1.4.3.1"
+gem "nokogiri", "~> 1.5.0"
 gem "json", ">= 0"
 gem "trollop", ">= 0"
 
@@ -14,7 +14,7 @@ gem "fastercsv", ">= 0", :platforms => :ruby_18
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   # only used for barcoding
-  gem "gbarcode", ">= 0.98.20", :platforms => :ruby_18
+  #gem "gbarcode", ">= 0.98.20", :platforms => :ruby_18
   gem "rmagick", ">= 0"
   
   gem "shoulda", ">= 0"
