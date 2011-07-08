@@ -86,19 +86,10 @@ class TestMeadUA015_010 < Test::Unit::TestCase
         end
         
         should "extract a series' series number" do
-          assert_equal 4, @extractor.stack[1][:series_number]
+          assert_equal 4, @extractor.stack[1][:series_sequence]
         end
 
-#        should "only extract up to the series level" do
-#          assert_equal [
-#            {:unittitle=>"Programs", :unitdate=>"1949-1950",
-#            :level => 'file', :unitid => nil, :item_location => 'Box 39, Folder 5'},
-#            {:unittitle=>"Men's Basketball", :unitdate=>"1911-2006",
-#              :level => 'series', :unitid => 'Series 4',
-#              :series_number => 4
-#            }
-#          ], @extractor.stack
-#        end
+
 
       end
 

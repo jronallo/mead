@@ -86,20 +86,10 @@ class TestMeadUA110_041 < Test::Unit::TestCase
         end
         
         should "extract a series' series number" do
-          assert_equal 1, @extractor.stack[1][:series_number]
+          assert_equal 1, @extractor.stack[1][:series_sequence]
         end
 
-#        should "only extract up to the series level" do
-#          assert_equal [
-#            {:unittitle=>"North Carolina, Wake County, Raleigh: Dix Hill [Dorothea Dix Hospital] Drawings",
-#              :unitdate=>nil, :level => 'file', :unitid => nil,
-#            :item_location => 'Folder 1.1'},
-#            {:unittitle=>"UA 110.041 Series 1: Projects", :unitdate=>"1951-1976",
-#              :level => 'series', :unitid => nil,
-#              :series_number => 1
-#            }
-#          ], @extractor.stack
-#        end
+
 
       end
 

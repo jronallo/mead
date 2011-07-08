@@ -6,6 +6,7 @@ class TestMeadExtractor < Test::Unit::TestCase
 
       @identifier = 'ua023_031-008-cb0013-001-001'
       @expected_1 = [
+       Mead::ComponentPart.new(
         {:level=>"file", 
         :unitdate=>nil, 
         :unitid=>nil, 
@@ -15,9 +16,9 @@ class TestMeadExtractor < Test::Unit::TestCase
         :containers => [
           Mead::Container.new(:type => 'cardbox', :label => "Mixed materials", :text => '13'), 
           Mead::Container.new(:type => 'Envelope', :text => '1')]
-        },
-        {:level=>"subseries", :unitdate=>nil, :unitid=>nil, :unittitle=>"Students"},
-        {:level=>"series", :unitdate=>nil, :series_number=>8, :unitid=>"Series 8", :unittitle=>"People"}]
+        }),
+        Mead::ComponentPart.new({:level=>"subseries", :unitdate=>nil, :unitid=>nil, :unittitle=>"Students"}),
+        Mead::ComponentPart.new({:level=>"series", :unitdate=>nil, :series_sequence=>8, :unitid=>"Series 8", :unittitle=>"People"})]
     end
 
     should "produce a good extraction with a filehandle location for the Ead" do
@@ -36,18 +37,18 @@ class TestMeadExtractor < Test::Unit::TestCase
 
     context 'mc00240-001-ff0052-000-001' do
       setup do
-        @expected_mc00240 = [{:unittitle=>"Friends Church",
+        @expected_mc00240 = [Mead::ComponentPart.new({:unittitle=>"Friends Church",
                     :item_location=>"flatfolder 52",
                     :unitdate=>"1927",
                     :level=>"file",
                     :unitid=>"903",
                     :containers => 
-                    [Mead::Container.new(:type => 'flatfolder', :label => 'Mixed materials', :text => '52')]},
-                   {:series_number=>1,
+                    [Mead::Container.new(:type => 'flatfolder', :label => 'Mixed materials', :text => '52')]}),
+                   Mead::ComponentPart.new({:series_sequence=>1,
                     :unittitle=>"Drawings",
                     :unitdate=>"1917-1980",
                     :level=>"series",
-                    :unitid=>"MC 240 Series 1"}]
+                    :unitid=>"MC 240 Series 1"})]
       end
       should 'handle empty folder properly' do
         mead = Mead::Identifier.new('mc00240-001-ff0052-000-001', File.open('test/ead/mc00240.xml'))

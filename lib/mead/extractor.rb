@@ -57,14 +57,13 @@ module Mead
       additional_did[:item_location] = did_location_text if did_location_text
       
       add_containers(additional_did, node)
-      
       if additional_did[:level] == 'series'
-        additional_did[:series_number] = series_number(node)
+        additional_did[:series_sequence] = series_number(node)
       end
       if @stack.last == additional_did
         return
       end
-      @stack << additional_did
+      @stack << Mead::ComponentPart.new(additional_did)
       if !node.parent.parent.xpath('xmlns:did').empty?
         push_to_stack(node.parent.parent.xpath('xmlns:did')[0])
       end
@@ -93,6 +92,8 @@ module Mead
       end
     end
 
+    # FIXME: This currently depends on series being numbered sequentially and being
+    # arranged in that order in the EAD XML.
     def get_series
       c01_series = @dsc.xpath(".//xmlns:c01[@level='series']")
       if c01_series and !c01_series.empty?

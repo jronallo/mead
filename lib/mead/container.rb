@@ -16,6 +16,15 @@ module Mead
       self.text == another_container.text
     end
     
+    def to_json(*a)
+     h = {
+       'json_class'   => self.class.name
+     }
+     self.instance_variables.each do |var|
+       h[var.sub('@','').to_sym] = self.send(var.sub('@','').to_sym)
+     end
+     h.to_json(*a)
+   end
     
   end
 end
