@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{mead}
-  s.version = "0.1.1"
+  s.name = "mead"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jason Ronallo"]
-  s.date = %q{2011-07-08}
-  s.description = %q{Extract identifiers and metadata from EAD XML.}
-  s.email = %q{jronallo@gmail.com}
+  s.date = "2012-01-27"
+  s.description = "Extract identifiers and metadata from EAD XML."
+  s.email = "jronallo@gmail.com"
   s.executables = ["mead2barcode", "meadbfv", "emv", "automead", "ead2meads"]
   s.extra_rdoc_files = [
     "LICENSE",
@@ -67,11 +67,11 @@ Gem::Specification.new do |s|
     "test/test_validations.rb",
     "watchr.rb"
   ]
-  s.homepage = %q{http://github.com/jronallo/mead}
+  s.homepage = "http://github.com/jronallo/mead"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Extract identifiers and metadata from EAD XML.}
+  s.rubygems_version = "1.8.10"
+  s.summary = "Extract identifiers and metadata from EAD XML."
   s.test_files = [
     "test/helper.rb",
     "test/test_barcode.rb",
