@@ -67,7 +67,11 @@ module Mead
     end
 
     def strip_zeros(num)
-      num.sub(/^0+/,'')
+      if num == '000'
+        '0'
+      else
+        num.sub(/^0+/,'')
+      end
     end
     
     def split_page

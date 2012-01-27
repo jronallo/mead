@@ -74,6 +74,11 @@ class TestMeadValidations < Test::Unit::TestCase
       mead = Mead::Identifier.new('mc00240-003-bx0068-fr002-001', @loc_mc00240).extract
       assert mead.valid?
     end
+    
+    should 'show mc00240-003-bx0068-fr002-000 to be a valid mead' do
+      mead = Mead::Identifier.new('mc00240-003-bx0068-fr002-000', @loc_mc00240).extract
+      assert mead.valid?
+    end
 
   end
 
