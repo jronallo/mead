@@ -44,6 +44,7 @@ module Mead
     'rb' => 'reelbox',
     'sk' => 'scrapbook',
     'sb' => 'slidebox',
+    'tb' => 'tubebox',
     'te' => 'tube',
     'vt' => 'videotape',
     've' => 'volume'
