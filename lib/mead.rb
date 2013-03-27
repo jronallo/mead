@@ -59,15 +59,4 @@ require 'mead/ead_validator'
 require 'mead/component_part'
 require 'mead/container'
 
-# if gbarcode and rmagick can both be loaded then load mead/barcode
-begin
-  require 'gbarcode'
-  begin
-    require 'RMagick'
-    require 'tempfile'
-    require 'mead/barcode'
-  rescue LoadError
-  end
-rescue LoadError
-end
 

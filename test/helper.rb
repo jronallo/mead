@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'bundler'
-require 'ruby-debug'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e

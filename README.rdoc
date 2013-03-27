@@ -15,7 +15,6 @@ the archival description makes the physical collections.
   component parts. This export can be CSV or JSON.
 - Resolve a filename-identifier to a location in the physical collection and 
   extract related metadata up through the hierarchy
-- Create barcodes based on an identifiers.
 - Validate whether an identifier is well-formed and valid by resolving to a 
   component part in the EAD XML.
 - Commandline tools for each of these functions.
@@ -23,9 +22,6 @@ the archival description makes the physical collections.
 == Installation
 
   gem install mead
-  
-To enable barcode generation you'll need to install rmagick and the version of
-gbarcode specified in the Gemfile.
   
 == Commandline use
 
