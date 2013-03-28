@@ -2,6 +2,8 @@
 
 Metadata from Encoded Archival Description.
 
+{<img src="https://travis-ci.org/jronallo/mead.png" />}[https://travis-ci.org/jronallo/mead]
+
 The core of this code is an identifier which expresses the location of an object
 in a physical collection. This identifier can be used as a filename for 
 digitized objects during scanning. Later descriptive metadata from EAD XML can
