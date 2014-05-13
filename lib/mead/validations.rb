@@ -74,17 +74,17 @@ module Mead
       def validates_presence_of_mead
         validates do |instance|
           begin
-          if instance.metadata
-            result = instance.metadata
-          else
-            result = Mead::Extractor.new(instance).extract
-          end
-          if result.nil? or result.empty?
-            add_error(instance, :mead, 'No matching container.')
-          # even if the instance.series is 1 there may not be any series in the EAD XML yet
-        elsif result.last[:series_sequence] and instance.series != result.last[:series_sequence].to_s
-            add_error(instance, :mead, 'Bad series.') 
-          end
+            if instance.metadata
+              result = instance.metadata
+            else
+              result = Mead::Extractor.new(instance).extract
+            end
+            if result.nil? or result.empty?
+              add_error(instance, :mead, 'No matching container.')
+            # even if the instance.series is 1 there may not be any series in the EAD XML yet
+            elsif result.last[:series_sequence] and instance.series != result.last[:series_sequence].to_s
+              add_error(instance, :mead, 'Bad series.')
+            end
           rescue => e
             add_error(instance, :mead, e)
           end

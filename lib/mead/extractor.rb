@@ -55,7 +55,7 @@ module Mead
       }
       did_location_text = did_location(node)
       additional_did[:item_location] = did_location_text if did_location_text
-      
+
       add_containers(additional_did, node)
       if additional_did[:level] == 'series'
         additional_did[:series_sequence] = series_number(node)
@@ -106,7 +106,7 @@ module Mead
         @series = @dsc
       end
     end
-    
+
     def folder_types
       types = "@type='#{@mead.folder[:type]}' or @type='#{@mead.folder[:type].capitalize}'"
       if @mead.folder[:type] == 'folder'
@@ -117,7 +117,7 @@ module Mead
 
     def find_node(folder=true)
       #dsc_dids = series.xpath('.//xmlns:did')
-      if @mead.container[:type]    
+      if @mead.container[:type]
         container_set_xpath = ".//xmlns:container[text()='#{@mead.container[:number]}' and (@type='#{@mead.container[:type]}' or @type='#{@mead.container[:type].capitalize}')]"
         if folder and @mead.folder
           container_set_xpath << "/../xmlns:container[text()='#{@mead.folder[:number]}' and (#{folder_types})]"
@@ -128,7 +128,7 @@ module Mead
           raise "too many matching nodes!"
         elsif containers.length == 0
           # Second chance to handle legacy identifiers where a blank folder was given as 001
-          if @mead.folder[:number] == '1'
+          if @mead.folder[:number] == '1' && folder
             #@mead.folder = nil #TODO: check do 000 folders get automatically turned to nil when the mead is created?
             find_node(false)
           else

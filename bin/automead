@@ -9,7 +9,7 @@ include Mead::TrollopOptions
 
 opts = Trollop::options do
   banner <<-EOS
-This script takes a mead (an identifier of a particular format) and returns 
+This script takes a mead (an identifier of a particular format) and returns
 metadata for it.
 
 Usage Example:
@@ -28,7 +28,7 @@ EOS
   opt :ver, 'Output just the version number of the gem.'
 end
 
-if opts[:ver]  
+if opts[:ver]
   puts File.read(File.join(File.dirname(__FILE__), '..', 'VERSION'))
   exit
 end

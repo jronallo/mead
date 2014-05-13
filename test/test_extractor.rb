@@ -7,14 +7,14 @@ class TestMeadExtractor < Test::Unit::TestCase
       @identifier = 'ua023_031-008-cb0013-001-001'
       @expected_1 = [
        Mead::ComponentPart.new(
-        {:level=>"file", 
-        :unitdate=>nil, 
-        :unitid=>nil, 
+        {:level=>"file",
+        :unitdate=>nil,
+        :unitid=>nil,
         :unittitle=>
             "Horticulture - students in greenhouse - for photograph see - Agriculture school - Horticulture - Hand Colored Slides, agriculture school",
         :item_location => 'cardbox 13, Envelope 1',
         :containers => [
-          Mead::Container.new(:type => 'cardbox', :label => "Mixed materials", :text => '13'), 
+          Mead::Container.new(:type => 'cardbox', :label => "Mixed materials", :text => '13'),
           Mead::Container.new(:type => 'Envelope', :text => '1')]
         }),
         Mead::ComponentPart.new({:level=>"subseries", :unitdate=>nil, :unitid=>nil, :unittitle=>"Students"}),
@@ -42,7 +42,7 @@ class TestMeadExtractor < Test::Unit::TestCase
                     :unitdate=>"1927",
                     :level=>"file",
                     :unitid=>"903",
-                    :containers => 
+                    :containers =>
                     [Mead::Container.new(:type => 'flatfolder', :label => 'Mixed materials', :text => '52')]}),
                    Mead::ComponentPart.new({:series_sequence=>1,
                     :unittitle=>"Drawings",
@@ -76,6 +76,16 @@ class TestMeadExtractor < Test::Unit::TestCase
   should "raise an exception when a duplicate Mead::Identifier is found by matching too many nodes" do
     assert_raise RuntimeError do
       Mead::Extractor.new(Mead::Identifier.new('mc00240-003-bx0069-000-001', File.open('test/ead/mc00240.xml'))).extract
+    end
+  end
+
+  context "the mead mc00270-001-lb0001-001-000 " do
+    should "should result in an error and not a stack trace too deep" do
+      fh   = File.open('test/ead/mc00270.xml')
+      mead = Mead::Identifier.new('mc00270-001-lb0001-001-000', fh)
+      assert_raise RuntimeError do
+        Mead::Extractor.new(mead).extract
+      end
     end
   end
 

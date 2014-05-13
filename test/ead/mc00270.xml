@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ead xsi:schemaLocation="urn:isbn:1-931666-22-9 http://www.loc.gov/ead/ead.xsd" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns="urn:isbn:1-931666-22-9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <eadheader findaidstatus="Completed" repositoryencoding="iso15511" countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b">
+        <eadid url="http://www.lib.ncsu.edu/findingaids/mc00270">mc00270</eadid>
+        <filedesc>
+            <titlestmt>
+                <titleproper>Guide to the William Dallas Herring Papers,
+                    <date calendar="gregorian" era="ce">1954-1986</date>
+                    <num>MC 00270</num>
+                </titleproper>
+            </titlestmt>
+        </filedesc>
+    </eadheader>
+    <archdesc level="collection">
+        <did>
+            <unittitle>William Dallas Herring Papers</unittitle>
+            <unitid>MC 00270</unitid>
+        </did>
+        <dsc>
+            <c01 id="ref11830" level="file">
+                <did>
+                    <unittitle>Segregation #1 (E-18) (1 of 3)</unittitle>
+                    <unitid>File box 122</unitid>
+                    <container id="cid26750008" type="legalbox" label="Mixed materials">1</container>
+                    <container parent="cid26750008" type="Folder">1</container>
+                    <unitdate>1954</unitdate>
+                </did>
+            </c01>
+            <c01 id="ref14147" level="file">
+                <did>
+                    <unittitle>Segregation #1 (E-18) (2 of 3)</unittitle>
+                    <container id="cid29523001" type="legalbox" label="Mixed materials">1</container>
+                    <container parent="cid29523001" type="Folder">2</container>
+                    <unitdate>1954</unitdate>
+                </did>
+            </c01>
+            <c01 id="ref13515" level="series">
+                <did>
+                    <unittitle>Volumes, Scrapbooks, and Binders</unittitle>
+                    <unitdate normal="1969/1979" type="inclusive">1969-1979</unitdate>
+                </did>
+                <c02 id="ref12043" level="subseries">
+                    <did>
+                        <unittitle>Consumer Mathematic Teaching Units (Department of Public Instruction)</unittitle>
+                        <unitdate>1969</unitdate>
+                    </did>
+                    <c03 id="ref14054" level="file">
+                        <did>
+                            <unittitle>Reports</unittitle>
+                            <container id="cid29080003" type="Carton" label="Mixed materials">139</container>
+                            <container parent="cid29080003" type="Folder">10-11</container>
+                            <unitdate>1969</unitdate>
+                        </did>
+                    </c03>
+                </c02>
+            </c01>
+        </dsc>
+    </archdesc>
+</ead>

@@ -1,7 +1,7 @@
 require 'helper'
 
 class TestEadValidator < Test::Unit::TestCase
-  
+
   context 'Given a directory of EAD XML validate them all' do
     setup do
       @eadv = Mead::EadValidator.new('test/ead/')
@@ -10,7 +10,7 @@ class TestEadValidator < Test::Unit::TestCase
       assert_equal 'test/ead/', @eadv.directory
     end
     should 'return results' do
-      expected = {:valid=>["ua021_428", "ua023_006"], 
+      expected = {:valid=>["mc00270", "ua021_428", "ua023_006"],
       :invalid=>["mc00145","mc00240", "ua015_010", "ua023_031", "ua110_041"]}
       assert_equal expected, @eadv.validate!
     end
