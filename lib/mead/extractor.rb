@@ -74,7 +74,7 @@ module Mead
         hash[:containers] = []
         node.xpath('./xmlns:container').each do |container|
           c = Mead::Container.new
-          c.type = container.attribute('type').text if container.attribute('type')
+          c.localtype = container.attribute('localtype').text if container.attribute('localtype')
           c.label = container.attribute('label').text if container.attribute('label')
           c.text = container.text if !container.text.empty?
           hash[:containers] << c
@@ -85,7 +85,7 @@ module Mead
     def did_location(did)
       location = []
       did.xpath('./xmlns:container').each do |container|
-        location << container.attribute('type').text + ' ' + container.text
+        location << container.attribute('localtype').text + ' ' + container.text
       end
       unless location.empty?
         location.join(', ')
@@ -108,17 +108,17 @@ module Mead
     end
 
     def folder_types
-      types = "@type='#{@mead.folder[:type]}' or @type='#{@mead.folder[:type].capitalize}'"
-      if @mead.folder[:type] == 'folder'
-        types << " or @type='envelope' or @type='Envelope'"
+      types = "@localtype='#{@mead.folder[:localtype]}' or @localtype='#{@mead.folder[:localtype].capitalize}'"
+      if @mead.folder[:localtype] == 'folder'
+        types << " or @localtype='envelope' or @localtype='Envelope'"
       end
       types
     end
 
     def find_node(folder=true)
       #dsc_dids = series.xpath('.//xmlns:did')
-      if @mead.container[:type]
-        container_set_xpath = ".//xmlns:container[text()='#{@mead.container[:number]}' and (@type='#{@mead.container[:type]}' or @type='#{@mead.container[:type].capitalize}')]"
+      if @mead.container[:localtype]
+        container_set_xpath = ".//xmlns:container[text()='#{@mead.container[:number]}' and (@localtype='#{@mead.container[:localtype]}' or @localtype='#{@mead.container[:localtype].capitalize}')]"
         if folder and @mead.folder
           container_set_xpath << "/../xmlns:container[text()='#{@mead.folder[:number]}' and (#{folder_types})]"
         end

@@ -36,7 +36,7 @@
                 <extent>69.0 Linear feet</extent>
                 <extent>3 cartons, 60 tubes, 7 flat folders</extent>
             </physdesc>
-            <unitdate normal="1965/2005" type="inclusive">circa 1965 - circa 2005</unitdate>
+            <unitdate normal="1965/2005" localtype="inclusive">circa 1965 - circa 2005</unitdate>
             <abstract id="ref13" label="Abstract">This collection contains materials from the career of landscape architect Gil Wheless: drawings of plans, photographs, CDs of CAD drawings, sketches, prinouts of CAD drawings, newsclippins, brochures, pamphlets, and other records.</abstract>
             <abstract id="ref14" label="Abstract">Gil Wheless grew up in Durham, North Carolina. During the 1960s he attended North Carolina State University's School of Design, eventually entering the landscape architecture program. He studied under Richard Moore and Lewis Clarke. He worked with A.E. Bye in Connecticut and later became a principal partner in Environmental Design Associates.</abstract>
             <origination label="creator">
@@ -83,72 +83,72 @@
             <c01 id="ref2" level="file">
                 <did>
                     <unittitle>Photographs, CDs of CAD drawings, sketches, prinouts of CAD drawings, newsclippings, brochures, pamphlets, and other records.</unittitle>
-                    <container id="cid27000001" type="Carton" label="Mixed materials">1</container>
+                    <container id="cid27000001" localtype="Carton" label="Mixed materials">1</container>
                 </did>
             </c01>
             <c01 id="ref3" level="file">
                 <did>
                     <unittitle>Photographs, CDs of CAD drawings, sketches, prinouts of CAD drawings, newsclippings, brochures, pamphlets, and other records.</unittitle>
-                    <container id="cid27000002" type="Carton" label="Mixed materials">2</container>
+                    <container id="cid27000002" localtype="Carton" label="Mixed materials">2</container>
                 </did>
             </c01>
             <c01 id="ref4" level="file">
                 <did>
                     <unittitle>Photographs, CDs of CAD drawings, sketches, prinouts of CAD drawings, newsclippings, brochures, pamphlets, and other records.</unittitle>
-                    <container id="cid27000003" type="Carton" label="Mixed materials">3</container>
+                    <container id="cid27000003" localtype="Carton" label="Mixed materials">3</container>
                 </did>
             </c01>
             <c01 id="ref15" level="file">
                 <did>
                     <unittitle>Photographic printouts</unittitle>
-                    <container id="cid27167001" type="flatbox" label="Mixed materials">4</container>
+                    <container id="cid27167001" localtype="flatbox" label="Mixed materials">4</container>
                 </did>
             </c01>
             <c01 id="ref5" level="file">
                 <did>
                     <unittitle>Drawings of landscape architecture plans</unittitle>
-                    <container id="cid27000010" type="tube" label="Mixed materials">54</container>
-                    <container id="cid27000011" type="tube" label="Mixed materials">53</container>
-                    <container id="cid27000008" type="tube" label="Mixed materials">56</container>
-                    <container id="cid27000009" type="tube" label="Mixed materials">55</container>
-                    <container id="cid27000014" type="tube" label="Mixed materials">50</container>
-                    <container id="cid27000012" type="tube" label="Mixed materials">52</container>
-                    <container id="cid27000013" type="tube" label="Mixed materials">51</container>
-                    <container id="cid27000006" type="tube" label="Mixed materials">58</container>
-                    <container id="cid27000007" type="tube" label="Mixed materials">57</container>
-                    <container id="cid27000004" type="tube" label="Mixed materials">60</container>
-                    <container id="cid27000005" type="tube" label="Mixed materials">59</container>
+                    <container id="cid27000010" localtype="tube" label="Mixed materials">54</container>
+                    <container id="cid27000011" localtype="tube" label="Mixed materials">53</container>
+                    <container id="cid27000008" localtype="tube" label="Mixed materials">56</container>
+                    <container id="cid27000009" localtype="tube" label="Mixed materials">55</container>
+                    <container id="cid27000014" localtype="tube" label="Mixed materials">50</container>
+                    <container id="cid27000012" localtype="tube" label="Mixed materials">52</container>
+                    <container id="cid27000013" localtype="tube" label="Mixed materials">51</container>
+                    <container id="cid27000006" localtype="tube" label="Mixed materials">58</container>
+                    <container id="cid27000007" localtype="tube" label="Mixed materials">57</container>
+                    <container id="cid27000004" localtype="tube" label="Mixed materials">60</container>
+                    <container id="cid27000005" localtype="tube" label="Mixed materials">59</container>
                 </did>
             </c01>
             <c01 id="ref6" level="file">
                 <did>
                     <unittitle>Drawings of landscape architecture plans and photographic printouts</unittitle>
-                    <container id="cid27000019" type="flatfolder" label="Mixed materials">3</container>
-                    <container id="cid27000018" type="flatfolder" label="Mixed materials">4</container>
-                    <container id="cid27000017" type="flatfolder" label="Mixed materials">5</container>
-                    <container id="cid27000016" type="flatfolder" label="Mixed materials">6</container>
-                    <container id="cid27000021" type="flatfolder" label="Mixed materials">1</container>
-                    <container id="cid27000020" type="flatfolder" label="Mixed materials">2</container>
+                    <container id="cid27000019" localtype="flatfolder" label="Mixed materials">3</container>
+                    <container id="cid27000018" localtype="flatfolder" label="Mixed materials">4</container>
+                    <container id="cid27000017" localtype="flatfolder" label="Mixed materials">5</container>
+                    <container id="cid27000016" localtype="flatfolder" label="Mixed materials">6</container>
+                    <container id="cid27000021" localtype="flatfolder" label="Mixed materials">1</container>
+                    <container id="cid27000020" localtype="flatfolder" label="Mixed materials">2</container>
                 </did>
             </c01>
             <c01 id="ref16" level="file">
                 <did>
                     <unittitle>Chesebrough Ponds - Trumbull</unittitle>
-                    <container id="cid27509002" type="tube" label="Mixed materials">1</container>
+                    <container id="cid27509002" localtype="tube" label="Mixed materials">1</container>
                 </did>
             </c01>
-            
+
             <c01 id="ref22" level="file">
                 <did>
                     <unittitle>David Berman, Stamford, Conn.</unittitle>
-                    <container id="cid27509007" type="tube" label="Mixed materials">1</container>
+                    <container id="cid27509007" localtype="tube" label="Mixed materials">1</container>
                     <unitdate normal="1973/1973">1973</unitdate>
                 </did>
             </c01>
             <c01 id="ref23" level="file">
                 <did>
                     <unittitle>Donald F. Liebert, Nanuet, N.Y.</unittitle>
-                    <container id="cid27509008" type="tube" label="Mixed materials">1</container>
+                    <container id="cid27509008" localtype="tube" label="Mixed materials">1</container>
                     <unitdate normal="1969/1969">1969</unitdate>
                 </did>
             </c01>

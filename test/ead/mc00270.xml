@@ -21,23 +21,23 @@
                 <did>
                     <unittitle>Segregation #1 (E-18) (1 of 3)</unittitle>
                     <unitid>File box 122</unitid>
-                    <container id="cid26750008" type="legalbox" label="Mixed materials">1</container>
-                    <container parent="cid26750008" type="Folder">1</container>
+                    <container id="cid26750008" localtype="legalbox" label="Mixed materials">1</container>
+                    <container parent="cid26750008" localtype="Folder">1</container>
                     <unitdate>1954</unitdate>
                 </did>
             </c01>
             <c01 id="ref14147" level="file">
                 <did>
                     <unittitle>Segregation #1 (E-18) (2 of 3)</unittitle>
-                    <container id="cid29523001" type="legalbox" label="Mixed materials">1</container>
-                    <container parent="cid29523001" type="Folder">2</container>
+                    <container id="cid29523001" localtype="legalbox" label="Mixed materials">1</container>
+                    <container parent="cid29523001" localtype="Folder">2</container>
                     <unitdate>1954</unitdate>
                 </did>
             </c01>
             <c01 id="ref13515" level="series">
                 <did>
                     <unittitle>Volumes, Scrapbooks, and Binders</unittitle>
-                    <unitdate normal="1969/1979" type="inclusive">1969-1979</unitdate>
+                    <unitdate normal="1969/1979" localtype="inclusive">1969-1979</unitdate>
                 </did>
                 <c02 id="ref12043" level="subseries">
                     <did>
@@ -47,8 +47,8 @@
                     <c03 id="ref14054" level="file">
                         <did>
                             <unittitle>Reports</unittitle>
-                            <container id="cid29080003" type="Carton" label="Mixed materials">139</container>
-                            <container parent="cid29080003" type="Folder">10-11</container>
+                            <container id="cid29080003" localtype="Carton" label="Mixed materials">139</container>
+                            <container parent="cid29080003" localtype="Folder">10-11</container>
                             <unitdate>1969</unitdate>
                         </did>
                     </c03>

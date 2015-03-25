@@ -21,12 +21,12 @@ class TestMeadUA023_006 < Test::Unit::TestCase
       end
 
       should "produce the expected container" do
-        expected = {:type=> 'box', :number => '1'}
+        expected = {:localtype=> 'box', :number => '1'}
         assert_equal expected, @result.container
       end
 
       should "produce the expected folder" do
-        assert_equal @result.folder, {:type=> 'folder', :number => '7'}
+        assert_equal @result.folder, {:localtype=> 'folder', :number => '7'}
       end
 
       should "produce the expected sequence" do
@@ -61,11 +61,11 @@ class TestMeadUA023_006 < Test::Unit::TestCase
         should "extract the item's unitdate" do
           assert_nil @extractor.stack[0][:unitdate]
         end
-        
+
         should "extract the item unitid" do
           assert_nil @extractor.stack[0][:unitid]
-        end 
-        
+        end
+
         should "extract the item level" do
           assert_equal 'file', @extractor.stack[0][:level]
         end
@@ -77,15 +77,15 @@ class TestMeadUA023_006 < Test::Unit::TestCase
         should "extract the parent unitdate" do
           assert_equal "circa 1900-1988", @extractor.stack[1][:unitdate]
         end
-        
+
         should "extract the parent unitid" do
           assert_nil @extractor.stack[1][:unitid]
         end
-        
+
         should "extract the parent level" do
           assert_equal 'series', @extractor.stack[1][:level]
         end
-        
+
         should "extract a series' series number" do
           assert_equal 2, @extractor.stack[1][:series_sequence]
         end

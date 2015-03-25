@@ -4,7 +4,7 @@
         <eadid url="http://www.lib.ncsu.edu/findingaids/ua021_428">ua021_428</eadid>
         <filedesc>
             <titlestmt>
-                <titleproper>Guide to the North Carolina State University, Student and Other Organizations, Student Amateur Radio Society Records, 
+                <titleproper>Guide to the North Carolina State University, Student and Other Organizations, Student Amateur Radio Society Records,
                     <date calendar="gregorian" normal="1930/1995" era="ce">1930-1995</date>
                     <num>UA 021.428</num>
                 </titleproper>
@@ -19,7 +19,7 @@
             <creation>This finding aid was produced using the Archivists' Toolkit
                 <date>2010-01-07T15:58-0500</date>
             </creation>
-            <langusage>Finding aid written in 
+            <langusage>Finding aid written in
                 <language langcode="eng" encodinganalog="Language">English.</language></langusage>
         </profiledesc>
     </eadheader>
@@ -36,10 +36,10 @@
             <physdesc>
                 <extent>4.0 Linear feet</extent>
             </physdesc>
-            <unitdate normal="1930/1995" type="inclusive">1930-1995</unitdate>
+            <unitdate normal="1930/1995" localtype="inclusive">1930-1995</unitdate>
             <abstract id="ref2" label="Abstract">The records of the North Carolina State University Student Amateur Radio Society contain meeting minutes, rosters of members, newsletters, club information, log books of radio activities, and QSL cards documenting calls. The Society operates under the callsign W4ATC.</abstract>
             <abstract id="ref3" label="Abstract">The Student Amateur Radio Society (also known at various times as the Amateur Radio Club and the Amateur Radio Society) was first established at NC State in 1930 or 1931, and was still active in 2008.</abstract>
-            <physloc id="ref4" label="Location">For current information on the location of these materials, please consult the Special Collections Research Center 
+            <physloc id="ref4" label="Location">For current information on the location of these materials, please consult the Special Collections Research Center
                 <extref ns2:type="simple" ns2:href="http://www.lib.ncsu.edu/specialcollections/research/requestinformation.html">Reference Staff</extref>.</physloc>
             <physdesc id="ref1" label="General Physical Description note">5 archival boxes, 1 archival half box, 3 card boxes</physdesc>
             <origination label="creator">
@@ -65,9 +65,9 @@
         </userestrict>
         <processinfo id="ref9">
             <head>Processing Information note</head>
-            <p>Processed by Cate Putirskis, 
+            <p>Processed by Cate Putirskis,
                 <date calendar="gregorian" era="ce">2008 May</date></p>
-            <p>Encoded by Cate Putirskis, 
+            <p>Encoded by Cate Putirskis,
                 <date calendar="gregorian" era="ce">2008 May</date></p>
         </processinfo>
         <userestrict id="ref10">
@@ -77,7 +77,7 @@
         <bioghist id="ref11">
             <head>Historical Note</head>
             <p>The Student Amateur Radio Society (also known at various times as the Amateur Radio Club and the Amateur Radio Society) was first established at NC State in 1930 or 1931. The club was licensed under the callsign W4ATC, which it was still using in 2008. The Student Amateur Radio Society has operated out of many different locations around campus during its nearly 80 years of existence, actively exchanging greetings with other amateur radio operators from around the world.</p>
-            <p>For more information about the history of the Student Amateur Radio Society, visit their 
+            <p>For more information about the history of the Student Amateur Radio Society, visit their
                 <extref ns2:href="http://w4atc.ncsu.edu/">website</extref>.</p>
         </bioghist>
         <scopecontent id="ref12">
@@ -99,45 +99,45 @@
             <c01 id="ref66" level="file">
                 <did>
                     <unittitle>Newsletter</unittitle>
-                    <container id="cid161872" type="halfbox" label="Mixed materials">6</container>
-                    <container parent="cid161872" type="Folder">3</container>
+                    <container id="cid161872" localtype="halfbox" label="Mixed materials">6</container>
+                    <container parent="cid161872" localtype="Folder">3</container>
                     <unitdate>Jan. 1972</unitdate>
                 </did>
             </c01>
             <c01 id="ref67" level="file">
                 <did>
                     <unittitle>QSL cards (1 of 3)</unittitle>
-                    <container id="cid161871" type="cardbox" label="Mixed materials">7</container>
+                    <container id="cid161871" localtype="cardbox" label="Mixed materials">7</container>
                     <unitdate>1930-1980</unitdate>
                 </did>
             </c01>
             <c01 id="ref68" level="file">
                 <did>
                     <unittitle>QSL cards (2 of 3)</unittitle>
-                    <container id="cid161870" type="cardbox" label="Mixed materials">8</container>
+                    <container id="cid161870" localtype="cardbox" label="Mixed materials">8</container>
                     <unitdate>1930-1980</unitdate>
                 </did>
             </c01>
             <c01 id="ref69" level="file">
                 <did>
                     <unittitle>QSL cards (3 of 3)</unittitle>
-                    <container id="cid161869" type="cardbox" label="Mixed materials">9</container>
+                    <container id="cid161869" localtype="cardbox" label="Mixed materials">9</container>
                     <unitdate>1930-1980</unitdate>
                 </did>
             </c01>
             <c01 id="ref70" level="file">
                 <did>
                     <unittitle>Technician article</unittitle>
-                    <container id="cid161868" type="halfbox" label="Mixed materials">6</container>
-                    <container parent="cid161868" type="Folder">4</container>
+                    <container id="cid161868" localtype="halfbox" label="Mixed materials">6</container>
+                    <container parent="cid161868" localtype="Folder">4</container>
                     <unitdate>Mar. 1992</unitdate>
                 </did>
             </c01>
             <c01 id="ref71" level="file">
                 <did>
                     <unittitle>W4ATC QSL cards</unittitle>
-                    <container id="cid161867" type="halfbox" label="Mixed materials">6</container>
-                    <container parent="cid161867" type="Folder">5</container>
+                    <container id="cid161867" localtype="halfbox" label="Mixed materials">6</container>
+                    <container parent="cid161867" localtype="Folder">5</container>
                     <unitdate>1958-1994</unitdate>
                 </did>
             </c01>

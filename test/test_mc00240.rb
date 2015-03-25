@@ -12,26 +12,26 @@ class TestMeadMC00240 < Test::Unit::TestCase
       @mead.extract
       expected = [Mead::ComponentPart.new({:unittitle=>"Moravian Chapel at Southside", :level=>"file",
                     :item_location=>"flatfolder 147", :unitdate=>"1928", :unitid=>"1034",
-                      :containers => 
-                      [Mead::Container.new(:type => 'flatfolder', 
+                      :containers =>
+                      [Mead::Container.new(:localtype => 'flatfolder',
                                             :label => "Mixed materials",
                                             :text => '147')]
-                    }), 
+                    }),
                    Mead::ComponentPart.new({:unittitle=>"Drawings", :series_sequence=>1,
                     :level=>"series", :unitdate=>"1917-1980", :unitid=>"MC 240 Series 1"})]
       assert_equal expected, @mead.metadata
     end
   end
-  
-  
+
+
   context "a mead from mc00240" do
     setup do
-      @mead_id = 'mc00240-001-ff0042-000-001'      
+      @mead_id = 'mc00240-001-ff0042-000-001'
       @fh = File.open('test/ead/mc00240.xml')
       @mead    = Mead::Identifier.new(@mead_id, @fh)
     end
 
-    context "parsing a mead from mc00240" do      
+    context "parsing a mead from mc00240" do
 
       should "produce expected output of eadid" do
         assert_equal @mead.eadid, 'mc00240'
@@ -42,7 +42,7 @@ class TestMeadMC00240 < Test::Unit::TestCase
       end
 
       should "produce the expected container" do
-        expected = {:type=> 'flatfolder', :number => '42'}
+        expected = {:localtype=> 'flatfolder', :number => '42'}
         assert_equal expected, @mead.container
       end
 
@@ -73,10 +73,10 @@ class TestMeadMC00240 < Test::Unit::TestCase
         setup do
           @result = @extractor.extract
         end
-        
+
         should "Cache the metadata in the Mead::Identifier" do
           mead = Mead::Identifier.new(@mead_id, @fh).extract
-          assert_equal @result, mead.metadata  
+          assert_equal @result, mead.metadata
         end
 
         should "extract the item's unittitle" do
@@ -86,16 +86,16 @@ class TestMeadMC00240 < Test::Unit::TestCase
         should "extract the item's unitdate" do
           assert_equal '1953', @extractor.stack[0][:unitdate]
         end
-        
+
         should "extract the item's level" do
           assert_equal 'file', @extractor.stack[0][:level]
         end
-        
+
         should "extract the item's unitid" do
           assert_equal '1421', @extractor.stack[0][:unitid]
         end
-        
-        should "extract the item's containers" do          
+
+        should "extract the item's containers" do
           assert_equal @extractor.stack[0][:containers].first.class, Mead::Container
         end
 
@@ -106,15 +106,15 @@ class TestMeadMC00240 < Test::Unit::TestCase
         should "extract the parent unitdate" do
           assert_equal "1917-1980", @extractor.stack[1][:unitdate]
         end
-        
+
         should "extract the parent level" do
           assert_equal "series", @extractor.stack[1][:level]
         end
-        
+
         should "extract the parent unitid" do
           assert_equal 'MC 240 Series 1', @extractor.stack[1][:unitid]
         end
-        
+
         should "extract a series' series number" do
           assert_equal 1, @extractor.stack[1][:series_sequence]
         end

@@ -59,24 +59,24 @@ module Mead
         end
       end
     end
-    
+
     def text_containers(did)
       did.xpath('xmlns:container').map do |container|
         text = ''
-        text << container.attribute('type').text + ' ' if container.attribute('type')
+        text << container.attribute('localtype').text + ' ' if container.attribute('localtype')
         text << container.text if container.text
         text
       end
     end
-    
+
     def c01s
       @doc.xpath('//xmlns:dsc/xmlns:c01')
     end
-    
+
     def c01s_series?
       @c01s_series_answer ||= c01s.length == series_c01s.length
     end
-    
+
     def series_c01s
       @doc.xpath("//xmlns:dsc/xmlns:c01[@level='series']")
     end
@@ -91,7 +91,7 @@ module Mead
       begin
         mead << specific_containers(did)
       rescue
-        return @mead = mead.flatten.join('-')        
+        return @mead = mead.flatten.join('-')
       end
       mead << '001' # stub for first record
       @mead = mead.flatten.join('-')
@@ -136,8 +136,8 @@ module Mead
     def container_type(container)
       match =''
       CONTAINER_MAPPING.each do |k,v|
-        if container.attribute('type').text == v or
-            container.attribute('type').text.downcase == v
+        if container.attribute('localtype').text == v or
+            container.attribute('localtype').text.downcase == v
           match = k
         end
       end
@@ -176,19 +176,19 @@ module Mead
         false
       end
     end
-    
+
     def unique_meads
       @containers.collect{|container| container[:mead]}.uniq
     end
-    
+
     def long_meads
       unique_meads.select{|m| m.split('-').length > 2}
     end
-    
+
     def short_meads
       unique_meads.select{|m| m.split('-').length <= 2}
     end
-    
+
     def short_meads?
       if unique_meads.length == long_meads.length
         false

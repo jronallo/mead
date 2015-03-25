@@ -14,8 +14,8 @@ class TestMeadExtractor < Test::Unit::TestCase
             "Horticulture - students in greenhouse - for photograph see - Agriculture school - Horticulture - Hand Colored Slides, agriculture school",
         :item_location => 'cardbox 13, Envelope 1',
         :containers => [
-          Mead::Container.new(:type => 'cardbox', :label => "Mixed materials", :text => '13'),
-          Mead::Container.new(:type => 'Envelope', :text => '1')]
+          Mead::Container.new(:localtype => 'cardbox', :label => "Mixed materials", :text => '13'),
+          Mead::Container.new(:localtype => 'Envelope', :text => '1')]
         }),
         Mead::ComponentPart.new({:level=>"subseries", :unitdate=>nil, :unitid=>nil, :unittitle=>"Students"}),
         Mead::ComponentPart.new({:level=>"series", :unitdate=>nil, :series_sequence=>8, :unitid=>"Series 8", :unittitle=>"People"})]
@@ -43,7 +43,7 @@ class TestMeadExtractor < Test::Unit::TestCase
                     :level=>"file",
                     :unitid=>"903",
                     :containers =>
-                    [Mead::Container.new(:type => 'flatfolder', :label => 'Mixed materials', :text => '52')]}),
+                    [Mead::Container.new(:localtype => 'flatfolder', :label => 'Mixed materials', :text => '52')]}),
                    Mead::ComponentPart.new({:series_sequence=>1,
                     :unittitle=>"Drawings",
                     :unitdate=>"1917-1980",

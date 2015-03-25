@@ -1,21 +1,21 @@
 module Mead
   class Container
-    attr_accessor :identifier, :type, :label, :text
-    
+    attr_accessor :identifier, :localtype, :label, :text
+
     def initialize(options={})
-      @type = options[:type]
+      @localtype = options[:localtype]
       @label = options[:label]
       @identifier = options[:identifier]
       @text = options[:text]
     end
-    
+
     def ==(another_container)
       self.identifier == another_container.identifier and
-      self.type == another_container.type and
+      self.localtype == another_container.localtype and
       self.label == another_container.label and
       self.text == another_container.text
     end
-    
+
     def to_json(*a)
      h = {
        'json_class'   => self.class.name
@@ -25,6 +25,6 @@ module Mead
      end
      h.to_json(*a)
    end
-    
+
   end
 end
